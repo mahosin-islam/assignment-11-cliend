@@ -23,12 +23,13 @@ const SingUp = () => {
     updataUserProfile,
     loader,
   } = use(AuthContex);
+  console.log(user)
 
   //emplement post method widd tanstacqury
   const axiosSicure = useAxiosSicures();
 
   const { isPaused, isError, mutateAsync } = useMutation({
-    mutationFn: async (data) => await axiosSicure.post(`/product`, data),
+    mutationFn: async (data) => await axiosSicure.post(`/user`, data),
     onSuccess: () => {
       toast("succes full you post");
       navigate(location.state || "/");
@@ -65,7 +66,13 @@ const SingUp = () => {
       const res = await creatUserWithEmail(email, password);
       const uploadImbb = await UploadImg(photo);
 
-      console.log("phot", uploadImbb);
+
+        const update = {
+        displayName: data.name,
+         photoURL: uploadImbb,
+      };
+      await updataUserProfile(update);
+  
       const creatUserRol = {
         Name: data.name,
         Email: email,
@@ -74,13 +81,8 @@ const SingUp = () => {
         status: "pending",
       };
       await mutateAsync(creatUserRol);
-      const update = {
-        displayName: data.name,
-        PhotoURL: uploadImbb,
-      };
-      await updataUserProfile(update);
-
       setUser(res.user);
+      console.log('user',res.user)
     } catch (err) {
       toast("Registration Error:", err.message);
     }
@@ -145,6 +147,7 @@ const SingUp = () => {
 
                 <option>buyer</option>
                 <option>manager</option>
+            
               </select>
               <label className="label">photo</label>
 

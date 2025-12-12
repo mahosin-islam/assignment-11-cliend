@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { user, creatSingOut } = use(AuthContex);
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [theme, setThem] = useState(localStorage.getItem("theme") || "light");
   useEffect(() => {
     const html = document.querySelector("html");
@@ -27,7 +27,7 @@ const Navbar = () => {
     <>
       <NavLink to="/home">Home</NavLink>
       <h2>
-        <NavLink to="/Allporducts">Allporducts</NavLink>
+        <NavLink to="/Allporduct">Allporduct</NavLink>
       </h2>
           <h2>
             <NavLink to="/Aboutus">About-us</NavLink>

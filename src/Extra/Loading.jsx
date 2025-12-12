@@ -5,7 +5,7 @@ const Loading = () => {
   return (
     <div className="flex justify-center items-center h-screen">
       <div>
-        render(
+        
         <DNA
           visible={true}
           height="80"
@@ -14,7 +14,7 @@ const Loading = () => {
           wrapperStyle={{}}
           wrapperClass="dna-wrapper"
         />
-        )
+        
       </div>
     </div>
   );
