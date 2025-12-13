@@ -24,8 +24,8 @@ const Review = () => {
   console.log(Reviews)
     return (
         <div>
-             <div className="my-15">
-      <div className="text-center w-8/12 mx-auto my-3">
+             <div className="my-10">
+      <div className="text-center w-8/12 mx-auto ">
         <h2 className="text-3xl py-2 font-bold">What our customers are sayings</h2>
         <p>
           Enhance posture, mobility, and well-being effortlessly with Posture
@@ -36,10 +36,10 @@ const Review = () => {
 
       <>
         <Swiper
-          effect={"coverflow"}
+          // effect={"coverflow"}
           loop={true}
-          spaceBetween={30}
-          grabCursor={true}
+          // spaceBetween={30}
+          // grabCursor={true}
           breakpoints={{
             // Mobile (default)
             0: {
@@ -55,22 +55,15 @@ const Review = () => {
             },
           }}
           centeredSlides={true}
-        //   slidesPerView={3}
-          coverflowEffect={{
-            rotate: 30,
-            stretch: "60%",
-            depth: 200,
-            scale: 0.75,
-            modifier: 1,
-            slideShadows: true,
-          }}
+          slidesPerView={3}
+         
           autoplay={{
             delay: 2000,
             disableOnInteraction: false,
           }}
           pagination={true}
           modules={[EffectCoverflow, Pagination, Autoplay]}
-          className="mySwiper"
+          className="mySwiper "
         >
           {Reviews?.map((review) => (
             <SwiperSlide key={review.id}>

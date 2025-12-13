@@ -7,6 +7,8 @@ import Loading from "../../Extra/Loading";
 import useRole from "../../Hooks/useRole";
 import { MdKeyboardBackspace } from "react-icons/md";
 import useStatus from "../../Hooks/useStatus";
+import { IoMdArrowRoundBack } from "react-icons/io";
+import { toast } from "react-toastify";
 const Dtails = () => {
   const { id } = useParams();
   const [images, setImages] = useState();
@@ -52,7 +54,7 @@ const Dtails = () => {
     MinimumOrder,
     quantity,
     cratorEmail,
-    photo:images,
+    photo: images,
   };
 
   const handel = (data) => {
@@ -68,90 +70,90 @@ const Dtails = () => {
       navigave("/");
     }
   };
+  const handelSespend = () => {
+      if (status == "pending") {
+      return toast("not could no access order beacuse you are state pending");
+    } else if (status === "suspend") {
+      return toast("not could no access order beacuse you are suspend");
+    }
 
+     else{
+      return toast("not could no access order beacuse you are suspend  and not approve");
+  };
+  }
   return (
-    <div className="my-5 flex flex-col md:flex-row border-2 min-h-100 mx-20">
-      <div className="flex-1 image-are">
-        <div className="h-2/3 flex items-center justify-center ">
-          <img className="h-40" src={images} alt="product" />
-        </div>
-        <div className="h-1/3 border-t-2  flex justify-center gap-3">
-          {Images.map((img, index) => (
-            <img
-              onClick={() => handel(img)}
-              className="h-20 "
-              key={index}
-              src={img}
-              alt="phot"
-            />
-          ))}
-        </div>
-      </div>
+    <div className="my-6 mx-4 md:mx-20 rounded-xl border shadow-sm bg-base-100 transition-colors duration-300">
+      <div className="flex flex-col md:flex-row">
+        {/* LEFT IMAGE SECTION */}
+        <div className="flex-1 p-4 md:p-6">
+          <div className="flex justify-center items-center h-64 bg-base-200 rounded-xl shadow-inner">
+            <img className="h-48 object-contain" src={images} alt="product" />
+          </div>
 
-      <div className="info-area  flex-1  pl-2 border-l-2">
-        <div className="md:gap-10 flex-1">
-          <span className="cursor-pointer flex items-center gap-3">
-            <MdKeyboardBackspace />
-            <span
-              onClick={handelNavigate}
-              className="text-green-500 cursor-pointer"
-            >
-              Go back
-            </span>
-          </span>
-          {/* Plant Info */}
+          <div className="flex justify-center gap-3 mt-4 flex-wrap p-3 bg-base-200 rounded-xl border">
+            {Images.map((img, index) => (
+              <img
+                onClick={() => handel(img)}
+                className="h-20 w-20 object-cover rounded-lg cursor-pointer hover:scale-105 transition-transform border"
+                key={index}
+                src={img}
+                alt="thumb"
+              />
+            ))}
+          </div>
+        </div>
 
-          <hr className="my-6" />
-          <div
-            className="
-         "
+        {/* RIGHT INFO SECTION */}
+        <div className="flex-1 border-t md:border-t-0 md:border-l p-5 md:p-8 space-y-4">
+          <button
+            onClick={handelNavigate}
+            className="btn btn-sm btn-outline flex items-center gap-2 mb-3"
           >
-            <h2>Title: {ProductName}</h2>
-          </div>
-          <hr className="my-1" />
+            <IoMdArrowRoundBack /> Back
+          </button>
 
-          <div>
-            <h2>Minimum order:{MinimumOrder}</h2>
-            <h2>Category:{Category}</h2>
-            <h2>contity:{quantity}</h2>
-          </div>
-          <hr className="my-6" />
-          <div>
-            <div className="py-1">
-              Payment <span className="text-amber-400"> {Payment}</span>
-            </div>
-            <p>Discription:{Description}</p>
-          </div>
-          <hr className="my-6" />
-          <div className="flex justify-between">
-            <p className="font-bold text-3xl text-pink-500">Price: {price}$</p>
+          <h2 className="text-2xl font-bold">{ProductName}</h2>
 
-            {role == "buyer" && status == "approve" ? (
+          <div className="space-y-1 text-lg">
+            <p>
+              <span className="font-semibold">Minimum order:</span>{" "}
+              {MinimumOrder}
+            </p>
+            <p>
+              <span className="font-semibold">Category:</span> {Category}
+            </p>
+            <p>
+              <span className="font-semibold">Quantity:</span> {quantity}
+            </p>
+          </div>
+
+          <div className="py-4 border-y space-y-1">
+            <p className="text-lg">
+              Payment:{" "}
+              <span className="text-amber-500 font-semibold">{Payment}</span>
+            </p>
+            <p className="opacity-80 leading-relaxed">
+              Description: {Description}
+            </p>
+          </div>
+
+          <div className="flex justify-between items-center py-3">
+            <p className="text-3xl font-bold text-pink-500">${price}</p>
+
+            {status === "approve" && role === "buyer" ? (
               <Link to="/Order" state={{ orderProduct }}>
-                <button
-                  className="btn btn-primay bg-amber-400 text-[18px] text-white
-       font-semibold"
-                >
+                <button className="btn bg-amber-500 text-white text-lg font-semibold shadow hover:bg-amber-600">
                   Order
                 </button>
               </Link>
             ) : (
-              ""
+              <button
+                onClick={handelSespend}
+                className="btn bg-amber-500 text-white text-lg font-semibold shadow hover:bg-amber-600"
+              >
+                Order
+              </button>
             )}
-
-            <div>
-              {/* <Button onClick={() => setIsOpen(true)} label="Purchase" /> */}
-            </div>
-          </div>
-          <hr className="my-4" />
-          <div className="flex gap-5 mb-3">
-            <button
-              onClick={() => RemoveProduct(_id)}
-              className="btn btn-primary"
-            >
-              Delet
-            </button>
-            <button className="btn btn-primary">Edit</button>
           </div>
         </div>
       </div>

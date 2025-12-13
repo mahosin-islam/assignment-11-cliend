@@ -33,24 +33,24 @@ const Approveorder = () => {
 
   const handelShowModel = (card) => {
     riderModelRef.current.showModal();
-     setTracking(card);
+    setTracking(card);
 
     console.log("ida", tracking);
   };
   const handelSubmited = async (e) => {
     e.preventDefault();
-    const TrackingInfo ={
-        trackingId:tracking.trackingId,
-          location:trackingData.location,
-          note:trackingData.note,
-          status:trackingData.status,
-          date:trackingData.date,
-    }
-    const res = await axiosSicure.post('/trackin',TrackingInfo)
-    console.log("data",TrackingInfo);
-    console.log('post reslt',res)
-     toast("post tracking id")
-     riderModelRef.current.close();
+    const TrackingInfo = {
+      trackingId: tracking.trackingId,
+      location: trackingData.location,
+      note: trackingData.note,
+      status: trackingData.status,
+      date: new Date(),
+    };
+    const res = await axiosSicure.post("/trackin", TrackingInfo);
+    console.log("data", TrackingInfo);
+    console.log("post reslt", res);
+    toast("post tracking id");
+    riderModelRef.current.close();
   };
 
   return (
@@ -95,7 +95,7 @@ const Approveorder = () => {
                     </button>
                   </td>
                   <td>
-                    <Link to={`/dashboard/Order-dtails/${card._id}`}>
+                    <Link to={`/dashboard/Tracking/${card.trackingId}`}>
                       <button className="btn bg-green-400">view</button>
                     </Link>
                   </td>
@@ -134,15 +134,6 @@ const Approveorder = () => {
                       setTrackingData({ ...trackingData, note: e.target.value })
                     }
                   />{" "}
-                  <br />
-                  <label htmlFor="">Date-Time</label>
-                  <input
-                    type="datetime-local"
-                    className="pl-5"
-                    onChange={(e) =>
-                      setTrackingData({ ...trackingData, date: e.target.value })
-                    }
-                  />
                   <br />
                   <select
                     onChange={(e) =>

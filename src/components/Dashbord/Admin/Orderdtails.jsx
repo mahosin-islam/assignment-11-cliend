@@ -1,11 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import useAxiosSicures from "../../../Hooks/useAxiosSicure";
 import Loading from "../../../Extra/Loading";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 const Orderdtails = () => {
 
   const { id } = useParams();
+  const  navigate =useNavigate();
   const axiosSicure = useAxiosSicures();
   const { isPending, data: orderDtail = [] } = useQuery({
     queryKey: ["orderDtail"],
@@ -43,6 +45,9 @@ photo,
       <div className="bg-white w-full max-w-4xl rounded-xl shadow-lg p-6 space-y-8">
         {/* Header */}
         <div className="flex justify-between items-center border-b pb-4">
+          <button onClick={()=> navigate(-1)}
+            className="text-2xl text-green-400"
+            ><IoMdArrowRoundBack /></button>
           <h1 className="text-2xl font-bold text-gray-800">Order Details  {orderDtail.length}</h1>
           <span className="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded-full">
             {status}

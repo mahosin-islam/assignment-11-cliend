@@ -7,10 +7,12 @@ import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import Loading from "../../../Extra/Loading";
 import { AuthContex } from "../../../Providers/AuthContex";
+import useStatus from "../../../Hooks/useStatus";
 
 const Addproduct = () => {
   const [previewImages, setPreviewImages] = useState([]);
-
+    const {status}=useStatus();
+  
   const axiosSicure = useAxiosSicures();
   const { user } = use(AuthContex);
   const navigate = useNavigate();
@@ -51,7 +53,11 @@ const Addproduct = () => {
   }
   // addd product
   const addProduct = async (data) => {
-    console.log(data);
+        if(status == "suspend"){
+            navigate('/dashboard/Myprofile')
+           return toast("you are suspents not access new addproduct ")
+           
+        }
     const {
       Description,
       MinimumOrder,

@@ -11,7 +11,11 @@ import useAxiosSicures from "../Hooks/useAxiosSicure";
 import Loading from "../Extra/Loading";
 
 const SingUp = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
   const [eye, setEye] = useState(true);
   const location = useLoaderData;
   const navigate = useNavigate();
@@ -23,7 +27,7 @@ const SingUp = () => {
     updataUserProfile,
     loader,
   } = use(AuthContex);
-  console.log(user)
+  console.log(user);
 
   //emplement post method widd tanstacqury
   const axiosSicure = useAxiosSicures();
@@ -65,14 +69,6 @@ const SingUp = () => {
       const password = data.password;
       const res = await creatUserWithEmail(email, password);
       const uploadImbb = await UploadImg(photo);
-
-
-        const update = {
-        displayName: data.name,
-         photoURL: uploadImbb,
-      };
-      await updataUserProfile(update);
-  
       const creatUserRol = {
         Name: data.name,
         Email: email,
@@ -80,15 +76,22 @@ const SingUp = () => {
         Role: data.role,
         status: "pending",
       };
+      const update = {
+        displayName: data.name,
+        photoURL: uploadImbb,
+      };
+      await updataUserProfile(update);
+
       await mutateAsync(creatUserRol);
+
       setUser(res.user);
-      console.log('user',res.user)
+      console.log("user", res.user);
     } catch (err) {
       toast("Registration Error:", err.message);
     }
   };
   ///singUp with google///
-  const handelGoogeSing = () => {
+  const handelGoogeSing = async() => {
     try {
       singInWithGoogle().then((res) => {
         //database creat usear
@@ -99,9 +102,9 @@ const SingUp = () => {
           Role: "buyer",
           status: "pending",
         };
-        mutateAsync(creatUser);
+           mutateAsync(creatUser);
         setUser(res.user);
-         navigate(location.state || "/");
+        navigate(location.state || "/");
         toast("successful google");
       });
     } catch (err) {
@@ -131,10 +134,15 @@ const SingUp = () => {
               <label className="label">Name</label>
               <input
                 type="text"
-                {...register("name")}
+                {...register("name", { required: true })}
                 className="input"
                 placeholder="name"
               />
+
+              {errors.name?.type == "required" && (
+                <p className="text-red-500">name is required</p>
+              )}
+
               <label className="label">Select your role</label>
               <select
                 className="select"
@@ -147,15 +155,18 @@ const SingUp = () => {
 
                 <option>buyer</option>
                 <option>manager</option>
-            
               </select>
               <label className="label">photo</label>
 
               <input
                 type="file"
-                {...register("photo")}
+                {...register("photo", { required: true })}
                 className="file-input"
               />
+
+              {errors.photo?.type == "required" && (
+                <p className="text-red-500">photo is required</p>
+              )}
 
               <label className="label">Email</label>
               <input
@@ -171,8 +182,7 @@ const SingUp = () => {
                   type={`${eye ? "password" : "text"}`}
                   {...register("password", {
                     required: true,
-                    minLength: 6,
-                    //   pattern: /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/,
+                    pattern: /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/,
                   })}
                   className="input"
                   placeholder="Password"
@@ -184,6 +194,15 @@ const SingUp = () => {
                   {eye ? <IoEyeOutline /> : <IoEyeOffOutline />}
                 </span>
               </span>
+
+    {errors.password?.type == "pattern" && (
+                  <p className="text-red-500">
+                    Password must be at least 6 characters and include on
+                    uppercase and on lowercase letters
+                  </p>
+                )}
+
+
               <button className="btn btn-neutral mt-4">singUp</button>
               {/* Google */}
               <button

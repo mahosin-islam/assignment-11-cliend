@@ -18,7 +18,7 @@ const Login = () => {
 const axiosSicure = useAxiosSicures();
 
   const { isPaused, isError, mutateAsync } = useMutation({
-    mutationFn: async (data) => await axiosSicure.post(`/product`, data),
+    mutationFn: async (data) => await axiosSicure.post(`/user`, data),
     onSuccess: () => {
       toast("succes full you post");
       navigate(location.state || "/");

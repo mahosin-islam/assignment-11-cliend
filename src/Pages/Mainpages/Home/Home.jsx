@@ -6,6 +6,7 @@ import HeroBanner from "../../../components/Homerileted/Herobanar.jsx/Herobanr";
 import Giods from "./Giods";
 import Review from "./Review";
 import { AuthContex } from "../../../Providers/AuthContex";
+import Resposer from "./Resposer";
 
 const Home = () => {
   const {user}=use(AuthContex)
@@ -19,6 +20,7 @@ const Home = () => {
        </div>
        <Giods></Giods>
        <Review></Review>
+       <Resposer></Resposer>
      </div>
       
   );

@@ -3,10 +3,13 @@ import { AuthContex } from "../../../Providers/AuthContex";
 import useAxiosSicures from "../../../Hooks/useAxiosSicure";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import useStatus from "../../../Hooks/useStatus";
 
 const Pendingorder = () => {
   const { user } = use(AuthContex);
+  const navigate =useNavigate();
+  const {status}=useStatus();
   const axiosSicure = useAxiosSicures();
   const queryClient = useQueryClient();
   const { data: product = [] } = useQuery({
@@ -20,8 +23,12 @@ const Pendingorder = () => {
   });
 
   const handelApproved = async (id) => {
-    const status = { status: "Approved" };
-    const res = await axiosSicure.patch(`/order-Approved/${id}`, status);
+    if(status=="suspend"){
+      navigate('/dashboard/Myprofile')
+      return toast('you are suspend not access Approbed')
+    }
+    const statu = { status: "Approved" };
+    const res = await axiosSicure.patch(`/order-Approved/${id}`, statu);
     if (res.data.modifiedCount) {
       toast("you status Approved");
       queryClient.invalidateQueries();
@@ -29,8 +36,12 @@ const Pendingorder = () => {
   };
 
   const handelRejected = async (id) => {
-    const status = { status: "Rejected" };
-    const res = await axiosSicure.patch(`/order-Rejected/${id}`, status);
+       if(status=="suspend"){
+        navigate('/dashboard/Myprofile')
+      return toast('you are suspend not access Reject')
+    }
+    const statu = { status: "Rejected" };
+    const res = await axiosSicure.patch(`/order-Rejected/${id}`, statu);
     if (res.data.modifiedCount) {
       toast("you status Rejected");
       queryClient.invalidateQueries();

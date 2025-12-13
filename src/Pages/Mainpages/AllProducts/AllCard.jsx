@@ -8,13 +8,14 @@ const AllCard = ({ card }) => {
    
     <div>
       <div className="col-span-1 cursor-pointer group shadow-xl p-3 rounded-xl ">
-        <div className="flex flex-col gap-2 w-full">
+        <div className="flex flex-col gap-2 w-full ">
           <div
             className="
               aspect-square 
               w-full 
               relative 
               overflow-hidden 
+            
               rounded-xl
             "
           >

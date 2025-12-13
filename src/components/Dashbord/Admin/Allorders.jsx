@@ -53,11 +53,11 @@ const Allorders = () => {
                   <td>{card.FirstName}</td>
                   <td>{card.ProductName}</td>
                   <td>{card.OrderQuantite}</td>
-                  <td>{card.Status}</td>
+                  <td>{card.status}</td>
 
                   <td>
                     <Link to={`/dashboard/Order-dtails/${card._id}`}>
-                      <button className="btn bg-pink-500">update order</button>
+                      <button className="btn bg-pink-500">Dtail-order</button>
                     </Link>
                   </td>
                 </tr>

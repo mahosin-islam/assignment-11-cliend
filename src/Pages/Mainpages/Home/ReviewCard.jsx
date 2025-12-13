@@ -7,7 +7,7 @@ const ReviewCard = ({review}) => {
     const {user_photoURL,review:pasination,userName}=review;
   
     return (
-       <div className="bg-white shadow-xl rounded-3xl p-8 max-w-xl border border-gray-100">
+       <div className=" my-4 bg-white  shadow-xl  p-8 max-w-xl border border-gray-100">
       {/* Quote Icon */}
       <div className="text-teal-300 text-5xl mb-3">
   <FaQuoteLeft></FaQuoteLeft>
@@ -23,9 +23,9 @@ const ReviewCard = ({review}) => {
       <div className="border-t border-dashed border-gray-300 my-4"></div>
 
       {/* User Info */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-8">
         {/* Avatar Circle */}
-        <div className="w-12 h-12  rounded-full">
+        <div className="w-12 h-12 rounded-full">
             <img className='rounded-full' src={user_photoURL} alt="" />
         </div>
 

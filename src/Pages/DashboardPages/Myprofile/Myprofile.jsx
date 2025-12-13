@@ -50,7 +50,7 @@ const handelShowModel = () => {
                 {status=="suspend"?
                   <button 
                   onClick={handelShowModel}
-                 className="mt-4 px-5 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-full flex items-center gap-2 transition"
+                 className="mt-4 px-5 py-2 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center gap-2 transition"
                 >Suspen-Reson</button>:""}  
              </div>
            

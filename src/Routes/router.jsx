@@ -24,22 +24,25 @@ import Manageproduct from "../components/Dashbord/Manage/Manageproduct";
 import Pendingorder from "../components/Dashbord/Manage/Pendingorder";
 import Approveorder from "../components/Dashbord/Manage/Approveorder";
 import Trackorder from "../components/Dashbord/Buyer/Trackorder";
-import Buyerprofile from "../components/Dashbord/Buyer/Buyerprofile";
 import Suspend from "../components/Dashbord/Admin/Suspend";
 import Update from "../components/Dashbord/Admin/Update";
 import Orderdtails from "../components/Dashbord/Admin/Orderdtails";
+import Track from "../components/Dashbord/Manage/Track";
+import Buyerporvider from "./Buyerporvider";
+import Adminporvider from "./Adminporvider";
+import Manerporvider from "./Manerporvider";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     element: <MainLayout></MainLayout>,
     children: [
       {
         path: "/",
         element: <Home></Home>,
       },
-       {
+      {
         path: "/Home",
         element: <Home></Home>,
       },
@@ -48,113 +51,148 @@ export const router = createBrowserRouter([
         element: <Allproduct></Allproduct>,
       },
       {
-         path:'/Aboutus',
-         element:<Aboutus></Aboutus>
-      },{
-           path:'/contact',
-           element:<Private>
-            <Contact></Contact>
-           </Private>
+        path: "/Aboutus",
+        element: <Aboutus></Aboutus>,
       },
       {
-        path:'/Login',
-        element:<Login></Login>
+        path: "contact",
+        element: <Contact></Contact>,
       },
       {
-        path:'/Singup',
-        element:<SingUp></SingUp>
-      },
-      {path:"/Dtails/:id",
-        element:<Private>
-          <Dtails></Dtails>
-        </Private>
+        path: "/Login",
+        element: <Login></Login>,
       },
       {
-        path:'/order',
-        element:<Order></Order>
+        path: "/Singup",
+        element: <SingUp></SingUp>,
       },
       {
-        path:'suspend',
-        element:<Suspend></Suspend>
-      }
+        path: "/Dtails/:id",
+        element: (
+          <Private>
+            <Dtails></Dtails>
+          </Private>
+        ),
+      },
+      {
+        path: "/order",
+        element: <Order></Order>,
+      },
+      {
+        path: "suspend",
+        element: <Suspend></Suspend>,
+      },
     ],
   },
   {
-    path:'dashboard',
-    element:<DashboardLayout></DashboardLayout>,
-    children:[
+    path: "dashboard",
+    element: (
+      <Private>
+        <DashboardLayout></DashboardLayout>
+      </Private>
+    ),
+
+    children: [
       {
-         index:true,
-        element:<DashboardHome></DashboardHome>
+        index: true,
+        element: <DashboardHome></DashboardHome>,
       },
       {
-        path:'Myprofile',
-        element:<Myprofile></Myprofile>
+        path: "Myprofile",
+        element: <Myprofile></Myprofile>,
       },
       //payment-method
-      {path:'successful',
-        element:<Success></Success>
+      { path: "successful", element: <Success></Success> },
+      {
+        path: "Cancel-pay",
+        element: <Cancel></Cancel>,
+      }, //extar-router
+      {
+        path: "Update/:id",
+        element: <Update></Update>,
+      },
+      { path: "Tracking/:id", element: <Track></Track> },
+      {
+        path: "Order-dtails/:id",
+        element: <Orderdtails></Orderdtails>,
+      },
+      //admin-routers
+      {
+        path: "manage-users",
+        element: (
+          <Adminporvider>
+            <Manageuser></Manageuser>
+          </Adminporvider>
+        ),
+      },
+      {
+        path: "all-products",
+        element: (
+          <Adminporvider>
+            <AllProducts></AllProducts>
+          </Adminporvider>
+        ),
+      },
+      {
+        path: "all-orders",
 
-      },  
-       {
-         path:'Cancel-pay',
-         element:<Cancel></Cancel>
-      },//extar-router
-       {
-        path:'Update/:id',
-        element:<Update></Update>
-       },
-       {
-        path:'Order-dtails/:id',
-        element:<Orderdtails></Orderdtails>
-       },
-        //admin-routers
-        {
-          path:'manage-users',
-          element:<Manageuser></Manageuser>
-        },
-        {
-            path:'all-products',
-            element:
-              <AllProducts></AllProducts>
-        },
-       {
-          path:'all-orders',
-          element:<Allorders></Allorders>
-       },
+        element: (
+          <Adminporvider>
+            <Allorders></Allorders>
+          </Adminporvider>
+        ),
+      },
       //  manage-routers
-         {
-       path:'Add-product',
-       element:<Addproduct></Addproduct>
+      {
+        path: "Add-product",
+        element: (
+          <Manerporvider>
+            <Addproduct></Addproduct>
+          </Manerporvider>
+        ),
       },
       {
-      path:'Manage-Products',
-      element:<Manageproduct></Manageproduct>
+        path: "Manage-Products",
+        element: (
+          <Manerporvider>
+            <Manageproduct></Manageproduct>
+          </Manerporvider>
+        ),
       },
       {
-        path:'Pending-Orders',
-        element:<Pendingorder></Pendingorder>
+        path: "Pending-Orders",
+        element: (
+          <Manerporvider>
+            <Pendingorder></Pendingorder>
+          </Manerporvider>
+        ),
       },
-       {
-        path:'Approve-Orders',
-        element:<Approveorder></Approveorder>
-       },
-     
-       //buyer-routers
       {
-        path:'My-order',
-        element:<Myorder></Myorder>
-       },
-       {
-        path:'Track-Order',
-        element:<Trackorder></Trackorder>
+        path: "Approve-Orders",
+        element: (
+          <Manerporvider>
+            <Approveorder></Approveorder>
+          </Manerporvider>
+        ),
+      },
 
-       },
-       {
-        path:'Buyer-Profile',
-        element:<Buyerprofile></Buyerprofile>
-       },
-     
-    ]
-  }
+      //buyer-routers
+      {
+        path: "My-order",
+        element: (
+          <Buyerporvider>
+            <Myorder></Myorder>
+          </Buyerporvider>
+        ),
+      },
+      {
+        path: "Track-Order",
+        element: (
+          <Buyerporvider>
+            <Trackorder></Trackorder>
+          </Buyerporvider>
+        ),
+      },
+    ],
+  },
 ]);

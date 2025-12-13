@@ -1,27 +1,27 @@
 // HowItWorks.jsx
 import React from "react";
 import { motion } from "framer-motion";
-import { FaSearch, FaShoppingCart, FaTruck } from "react-icons/fa";
+import {  FaShoppingCart,  } from "react-icons/fa";
 import { Link } from "react-router";
-
+import { MdManageAccounts, MdOutlineManageHistory } from "react-icons/md";
 const steps = [
   {
     id: 1,
-    linK:'/Allporducts',
-    icon: <FaSearch size={40} />,
-    title: "Browse Products",
+   
+    icon: <MdOutlineManageHistory size={40} />,
+    title: "Garments order management",
     desc: "Explore our wide collection of stylish garments for every occasion.",
   },
   {
     id: 2,
     icon: <FaShoppingCart size={40} />,
-    title: "Place Order",
+    title: "Boking ordering",
     desc: "Add your chosen items to the cart and checkout effortlessly.",
   },
   {
     id: 3,
-    icon: <FaTruck size={40} />,
-    title: "Receive Product",
+    icon: <MdManageAccounts size={40} />,
+    title: "buyer connection",
     desc: "Get your order delivered safely and quickly to your doorstep.",
   },
 ];
@@ -40,7 +40,7 @@ const stepVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-const Giods = () => {
+const Oursevice = () => {
   return (
     <section className="py-5 px-6 bg-l">
       <motion.div
@@ -49,11 +49,7 @@ const Giods = () => {
         transition={{ duration: 0.7 }}
         className="text-center mb-12"
       >
-        <h2 className="text-4xl font-bold mb-3">How It Works</h2>
-        <p className="text-gray-700 max-w-2xl mx-auto">
-          Follow these simple steps to browse, order, and receive your favorite
-          garments quickly and effortlessly.
-        </p>
+        <h2 className="text-4xl font-bold mb-3">Our service</h2>
       </motion.div>
 
       <motion.div
@@ -95,16 +91,12 @@ const Giods = () => {
         transition={{ delay: 1, duration: 0.7 }}
         className="text-center mt-12"
       >
-        <a   href="/contact" 
-         className="bg-blue-600 text-white px-6 py-3 rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg transition">
-          Start Shopping
-        </a>
       </motion.div>
     </section>
   );
 };
 
-export default Giods;
+export default Oursevice;
 
 
 
@@ -112,9 +104,3 @@ export default Giods;
 
 
 
-
-
-// relative p-6 rounded-xl shadow-md flex flex-col items-center text-center hover:scale-105 transition-all duration-2000 cursor-pointer group
-
-
-// relative group inline-flex items-center justify-center p-6  rounded-2xl bg-amber-500   shadow-md transform hover:scale-105 transition-transform focus:outline-none focus:ring-4 focus:ring-amber-300  overflow-hidden

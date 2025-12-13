@@ -36,7 +36,7 @@ const Order = () => {
 
     onSuccess: () => {
       toast("succes full your order");
-      navigate("/");
+      navigate("/dashboard/My-order");
     },
     onError: (err) => {
       console.log("error", err);
