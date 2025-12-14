@@ -56,7 +56,7 @@ console.log('data',order)
 
   return (
     <div>
-      <h3>my order {order.length}</h3>
+      <h3 className='text-2xl text-center'>my order {order.length}</h3>
       <div>
          <div className="overflow-x-auto">
           <table className="table table-zebra">

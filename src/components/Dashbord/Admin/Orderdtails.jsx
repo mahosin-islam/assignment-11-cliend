@@ -5,9 +5,8 @@ import Loading from "../../../Extra/Loading";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
 const Orderdtails = () => {
-
   const { id } = useParams();
-  const  navigate =useNavigate();
+  const navigate = useNavigate();
   const axiosSicure = useAxiosSicures();
   const { isPending, data: orderDtail = [] } = useQuery({
     queryKey: ["orderDtail"],
@@ -16,40 +15,39 @@ const Orderdtails = () => {
       return res.data;
     },
   });
-  if(isPending){
-    return <Loading></Loading>
+  if (isPending) {
+    return <Loading></Loading>;
   }
- const {
-ProductName,
-DeliveryAddress,
-PaymentType,
-FirstName,
-LastName,
-OrderEmail,
-Price,
-OrderQuantite,
-trackingId,
-createdAt,
-status,
-photo,
-cratorEmail,
+  const {
+    ProductName,
+    DeliveryAddress,
+    PaymentType,
+    FirstName,
+    LastName,
+    OrderEmail,
+    Price,
+    OrderQuantite,
+    trackingId,
+    createdAt,
+    status,
+    photo,
+    cratorEmail,
+  } = orderDtail;
 
-
- }=orderDtail;
-
-
-
-
-  
   return (
     <div className="min-h-screen  p-6 flex justify-center">
       <div className="bg-white w-full max-w-4xl rounded-xl shadow-lg p-6 space-y-8">
         {/* Header */}
         <div className="flex justify-between items-center border-b pb-4">
-          <button onClick={()=> navigate(-1)}
+          <button
+            onClick={() => navigate(-1)}
             className="text-2xl text-green-400"
-            ><IoMdArrowRoundBack /></button>
-          <h1 className="text-2xl font-bold text-gray-800">Order Details  {orderDtail.length}</h1>
+          >
+            <IoMdArrowRoundBack />
+          </button>
+          <h1 className="text-2xl font-bold text-gray-800">
+            Order Details {orderDtail.length}
+          </h1>
           <span className="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded-full">
             {status}
           </span>
@@ -57,7 +55,6 @@ cratorEmail,
 
         {/* Order Info */}
         <div className="space-y-2">
-          
           <p className="text-gray-700">
             <strong>trackingId ID:</strong> {trackingId}
           </p>
@@ -66,15 +63,15 @@ cratorEmail,
           </p>
         </div>
         {/* Crator-email */}
-          <div  className="bg-gray-50 p-4 rounded-lg">
-            <h2 className="text-lg font-semibold text-gray-800 mb-3">
+        <div className="bg-gray-50 p-4 rounded-lg">
+          <h2 className="text-lg font-semibold text-gray-800 mb-3">
             Manager Information
           </h2>
           <p>
             <strong>ManagerEmail:</strong> {cratorEmail}
           </p>
-          </div>
-        {/* Customer Info */}
+        </div>
+        {/* Customer Infortin */}
 
         <div className="bg-gray-50 p-4 rounded-lg">
           <h2 className="text-lg font-semibold text-gray-800 mb-3">
@@ -86,8 +83,7 @@ cratorEmail,
           <p>
             <strong>Email:</strong> {OrderEmail}
           </p>
-    
-         
+
           <p>
             <strong>Address:</strong> {DeliveryAddress}
           </p>
@@ -97,25 +93,19 @@ cratorEmail,
         <div className="bg-gray-50 p-4 rounded-lg">
           <h2 className="text-lg font-semibold text-gray-800 mb-4">Products</h2>
 
-         
-            <div
-              
-              className="flex items-center justify-between mb-4 border-b pb-4"
-            >
-              <div className="flex items-center gap-4">
-                <img
-                  src={photo}
-                  className="w-16 h-16 rounded-lg object-cover"
-                />
-                <div>
-                  <p className="font-semibold text-gray-800">{ProductName}</p>
-                  <p className="text-gray-600 text-sm">Quantity:{OrderQuantite} </p>
-                </div>
+          <div className="flex items-center justify-between mb-4 border-b pb-4">
+            <div className="flex items-center gap-4">
+              <img src={photo} className="w-16 h-16 rounded-lg object-cover" />
+              <div>
+                <p className="font-semibold text-gray-800">{ProductName}</p>
+                <p className="text-gray-600 text-sm">
+                  Quantity:{OrderQuantite}{" "}
+                </p>
               </div>
-
-              <p className="text-gray-700 font-semibold">৳ {Price}</p>
             </div>
-        
+
+            <p className="text-gray-700 font-semibold">৳ {Price}</p>
+          </div>
         </div>
 
         {/* Payment Info */}
