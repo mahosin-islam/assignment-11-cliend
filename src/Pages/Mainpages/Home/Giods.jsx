@@ -95,10 +95,7 @@ const Giods = () => {
         transition={{ delay: 1, duration: 0.7 }}
         className="text-center mt-12"
       >
-        <a   href="/contact" 
-         className="bg-blue-600 text-white px-6 py-3 rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg transition">
-          Start Shopping
-        </a>
+       
       </motion.div>
     </section>
   );

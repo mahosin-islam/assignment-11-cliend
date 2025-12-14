@@ -151,7 +151,7 @@ const Approveorder = () => {
                     <option>Shipped</option>
                     <option>Out for Delivery</option>
                   </select>
-                  <button className="ml-5" type="submit">
+                  <button className="ml-5 btn btn-primary" type="submit">
                     Save
                   </button>
                 </form>

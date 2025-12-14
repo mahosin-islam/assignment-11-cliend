@@ -30,7 +30,7 @@ const Suspend = () => {
 
   return (
     <div>
-      <h2 className="my-10 text-center text-xl font-semibold">Suspend User</h2>
+      <h2 className="my-30 text-center text-xl font-semibold">Suspend User</h2>
       <div className="flex justify-center items-center ">
         <div className="w-1/3 border-2 border-gray-200">
           <form onSubmit={handleSubmit(handelSuspen)}>

@@ -34,10 +34,10 @@ const Allorders = () => {
       </div>
       <div>
         <div className="overflow-x-auto">
-          <table className="table table-zebra">
+          <table className="table table-zebra md:pl-10">
             <thead>
               <tr>
-                <th>orId</th>
+                <th>OId</th>
                 <th>user</th>
                 <th>product</th>
                 <th>quantity</th>

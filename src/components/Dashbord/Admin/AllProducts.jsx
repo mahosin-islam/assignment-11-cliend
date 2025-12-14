@@ -63,10 +63,10 @@ const AllProducts = () => {
       </h2>
       <div>
         <div className="overflow-x-auto">
-          <table className="table table-zebra">
+          <table className="table table-zebra md:pl-10">
             <thead>
               <tr>
-                <th>No</th>
+                <th>Image</th>
                 <th>Name</th>
                 <th>Price</th>
                 <th>Category</th>
@@ -78,7 +78,14 @@ const AllProducts = () => {
               {/* row 1 */}
               {product.map((card, index) => (
                 <tr key={index} card={card}>
-                  <th>{index + 1} </th>
+                  <th className="w-10  rounded-full">
+                    <img
+                      referrerPolicy="no-referrer"
+                      src={card.Images}
+                      alt="Tailwind CSS Navbar component"
+                    />
+                  </th>
+
                   <td>{card.ProductName}</td>
                   <td>{card.price}</td>
                   <td>{card.Category}</td>

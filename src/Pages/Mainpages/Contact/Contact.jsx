@@ -81,7 +81,7 @@ const Contact = () => {
                   placeholder="Write your message"
                 ></textarea>
 
-                <button className="btn w-50 rounded-2xl bg-[#c7a07e] py-2 mt-4">
+                <button className="btn w-50 rounded-2xl bg-pink-400 hover:bg-pink-600 py-2 mt-4">
                   Send message
                 </button>
               </fieldset>

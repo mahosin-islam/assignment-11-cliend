@@ -3,6 +3,7 @@ import { use, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContex } from "../../Providers/AuthContex";
 import { toast } from "react-toastify";
+import { MdLogout } from "react-icons/md";
 // import log from "../assets/Logo.png";
 
 const Navbar = () => {
@@ -70,12 +71,12 @@ const Navbar = () => {
             {user ? (
               <button 
               className="btn"
-              onClick={handelLogOut}>Logout</button>
+              onClick={handelLogOut}>Logout <MdLogout /></button>
             ) : (
               <>
                 <Link className="btn" to="/login">Login</Link>
 
-                <Link className="btn" to="/Singup">Singup</Link>
+                <Link className="btn" to="/Singup">Register</Link>
               </>
             )}
           </div>
@@ -117,7 +118,7 @@ const Navbar = () => {
               <li>
                 <button 
                
-                onClick={handelLogOut}>Logout</button>
+                onClick={handelLogOut}>Logout  <MdLogout /></button>
               </li>
             </ul>
           </div>

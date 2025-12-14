@@ -9,16 +9,17 @@ import useAxiosSicures from "../Hooks/useAxiosSicure";
 import { useMutation } from "@tanstack/react-query";
 
 const Login = () => {
-  const { setUser, userSingIn, singInWithGoogle} = use(AuthContex);
-  const { register,
+  const { setUser, userSingIn, singInWithGoogle } = use(AuthContex);
+  const {
+    register,
 
- 
-    handleSubmit } = useForm();
+    handleSubmit,
+  } = useForm();
   const [eye, setEye] = useState(true);
   const location = useLocation();
   const navigate = useNavigate();
 
-const axiosSicure = useAxiosSicures();
+  const axiosSicure = useAxiosSicures();
 
   const { isPaused, isError, mutateAsync } = useMutation({
     mutationFn: async (data) => await axiosSicure.post(`/user`, data),
@@ -50,24 +51,23 @@ const axiosSicure = useAxiosSicures();
   }
   //login
   const handelLogin = async (data) => {
-       try {
+    try {
       const email = data.email;
       const password = data.password;
       const res = await userSingIn(email, password);
-      console.log(res.user)
+      console.log(res.user);
       setUser(res.user);
       toast("successful login");
       navigate(location.state || "/");
-    } catch  {
-      toast('somthing wrong email or password')
-     
+    } catch {
+      toast("somthing wrong email or password");
     }
   };
   ///singUp with google///
   const handelGoogeSing = () => {
     singInWithGoogle()
       .then((res) => {
-         const creatUser = {
+        const creatUser = {
           Name: res.user.displayName,
           Email: res.user.email,
           PhotoURL: res.user.photoURL,
@@ -77,7 +77,7 @@ const axiosSicure = useAxiosSicures();
         mutateAsync(creatUser);
         setUser(res.user);
         toast("successful singIn");
-          navigate(location.state || "/");
+        navigate(location.state || "/");
       })
       .catch((err) => console.log(err.message));
   };
@@ -106,11 +106,6 @@ const axiosSicure = useAxiosSicures();
                   placeholder="Email"
                 />
 
-
-
-
-
-
                 <label className="label">Password</label>
 
                 <span className="relative">
@@ -128,7 +123,9 @@ const axiosSicure = useAxiosSicures();
                   </span>
                 </span>
 
-                <button className="btn btn-neutral mt-4">LogIn</button>
+                <button className="bg-linear-to-r from-[#632ee3]  to-[#9f62f2] px-4 p-2 font-semibold rounded-sm text-white">
+                  LogIn
+                </button>
                 <button
                   onClick={handelGoogeSing}
                   className="btn bg-white text-black border-[#e5e5e5]"

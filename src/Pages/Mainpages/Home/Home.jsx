@@ -18,8 +18,8 @@ const Home = () => {
        <div className="">
           <Homproduct></Homproduct>
        </div>
-       <Giods></Giods>
        <Review></Review>
+       <Giods></Giods>
        <Resposer></Resposer>
      </div>
       
