@@ -42,6 +42,7 @@ console.log('data',order)
                 <th>quantity</th>
                 <th>Payment</th>
                 <th>Track</th>
+                <th>Dtails</th>
                
               </tr>
             </thead>
@@ -58,7 +59,10 @@ console.log('data',order)
                      <Link to={`/dashboard/Tracking/${card.trackingId}`}>
                     <button className='btn'>Track order</button></Link>
                   </td>
-                 
+                   <Link to={`/dashboard/Order-dtails/${card._id}`}>
+                      <td>
+                        <button className='btn btn-primary'>Dtail</button>
+                      </td></Link>
                 </tr>
               ))}
             </tbody>

@@ -49,7 +49,7 @@ const Track = () => {
 {product.length === 0 ? (
 <tr>
 <td colSpan="4" className="text-center py-6 text-gray-500">
-No tracking data available
+ Now  your order pending
 </td>
 </tr>
 ) : (

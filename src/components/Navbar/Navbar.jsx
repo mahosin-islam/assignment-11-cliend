@@ -53,7 +53,7 @@ const Navbar = () => {
       <div className="navbar  z-2 shadow-sm bg-white fixed w-full top-0 left-0">
         <div className="navbar-start">
           <div className="flex gap-2 items-center">
-            <div onClick={handelToge} className="md:hidden lg:hidden block">
+            <div onClick={handelToge} className="md:hidden lg:hidden block text-green-500">
               <Hamburger size={20} />
             </div>
             <div>
@@ -62,18 +62,20 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center">
-          <div className="  items-center hidden md:flex gap-3 ">{link}</div>
+          <div className="  items-center hidden text-gray-600 font-sem md:flex gap-3 ">{link}</div>
         </div>
 
         <div className="navbar-end">
           <div className="mr-10 flex gap-2 items-center">
             {user ? (
-              <button onClick={handelLogOut}>Logout</button>
+              <button 
+              className="btn"
+              onClick={handelLogOut}>Logout</button>
             ) : (
               <>
-                <Link to="/login">Login</Link>
+                <Link className="btn" to="/login">Login</Link>
 
-                <Link to="/Singup">Singup</Link>
+                <Link className="btn" to="/Singup">Singup</Link>
               </>
             )}
           </div>
@@ -113,7 +115,9 @@ const Navbar = () => {
                 <Link to="/dashboard">dashboard</Link>
               </li>
               <li>
-                <button onClick={handelLogOut}>Logout</button>
+                <button 
+               
+                onClick={handelLogOut}>Logout</button>
               </li>
             </ul>
           </div>
@@ -122,7 +126,7 @@ const Navbar = () => {
          
         </div>
       </div>
-      <div className="mt-28  md:hidden lg:hidden block ">{open && <>{link}</>}</div>
+      <div className="mt-18 p-5 text-2xl font-semibold  text-gray-600 md:hidden lg:hidden block ">{open && <>{link}</>}</div>
     </div>
   );
 };

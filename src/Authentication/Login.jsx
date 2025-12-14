@@ -10,7 +10,10 @@ import { useMutation } from "@tanstack/react-query";
 
 const Login = () => {
   const { setUser, userSingIn, singInWithGoogle} = use(AuthContex);
-  const { register, handleSubmit } = useForm();
+  const { register,
+
+ 
+    handleSubmit } = useForm();
   const [eye, setEye] = useState(true);
   const location = useLocation();
   const navigate = useNavigate();
@@ -55,8 +58,9 @@ const axiosSicure = useAxiosSicures();
       setUser(res.user);
       toast("successful login");
       navigate(location.state || "/");
-    } catch (err) {
-      console.log(err.message);
+    } catch  {
+      toast('somthing wrong email or password')
+     
     }
   };
   ///singUp with google///
@@ -101,6 +105,12 @@ const axiosSicure = useAxiosSicures();
                   className="input"
                   placeholder="Email"
                 />
+
+
+
+
+
+
                 <label className="label">Password</label>
 
                 <span className="relative">

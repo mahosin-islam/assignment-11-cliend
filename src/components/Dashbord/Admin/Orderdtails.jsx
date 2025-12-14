@@ -32,6 +32,7 @@ trackingId,
 createdAt,
 status,
 photo,
+cratorEmail,
 
 
  }=orderDtail;
@@ -64,8 +65,17 @@ photo,
             <strong>Order Date:</strong> {new Date(createdAt).toLocaleString()}
           </p>
         </div>
-
+        {/* Crator-email */}
+          <div  className="bg-gray-50 p-4 rounded-lg">
+            <h2 className="text-lg font-semibold text-gray-800 mb-3">
+            Manager Information
+          </h2>
+          <p>
+            <strong>ManagerEmail:</strong> {cratorEmail}
+          </p>
+          </div>
         {/* Customer Info */}
+
         <div className="bg-gray-50 p-4 rounded-lg">
           <h2 className="text-lg font-semibold text-gray-800 mb-3">
             Customer Information
@@ -76,6 +86,7 @@ photo,
           <p>
             <strong>Email:</strong> {OrderEmail}
           </p>
+    
          
           <p>
             <strong>Address:</strong> {DeliveryAddress}

@@ -82,7 +82,7 @@ const Dtails = () => {
   };
   }
   return (
-    <div className="my-6 mx-4 md:mx-20 rounded-xl border shadow-sm bg-base-100 transition-colors duration-300">
+    <div className="my-6 mx-4 md:mx-20 mt-30 rounded-xl border shadow-sm bg-base-100 transition-colors duration-300">
       <div className="flex flex-col md:flex-row">
         {/* LEFT IMAGE SECTION */}
         <div className="flex-1 p-4 md:p-6">

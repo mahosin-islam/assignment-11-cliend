@@ -7,7 +7,7 @@ const MainLayout = () => {
     return (
         <div>
              <Navbar />
-      <div className='mt-22 min-h-[calc(100vh-68px)] '>
+      <div className='mt-2 min-h-[calc(100vh-68px)] '>
         <Outlet />
       </div>
       <Footer />
