@@ -17,7 +17,7 @@ export default function HeroBanner({
       role="img"
       aria-label="Hero image showing clothing collection"
     >
-      <div className=" max-w-7xl mx-auto p-4 md:px-12 md:py-22">
+      <div className=" max-w-7xl mx-auto p-4 md:px-12 md:py-32">
         <div className="flex items-center">
           <div className="w-full md:w-2/3 lg:w-1/2 
            
