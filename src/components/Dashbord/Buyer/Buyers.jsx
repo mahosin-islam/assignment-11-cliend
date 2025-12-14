@@ -3,7 +3,7 @@ import React from 'react';
 const Buyers = () => {
     return (
         <div>
-            <h2>buyers home pages</h2>
+            <h2>hll burj</h2>
         </div>
     );
 };

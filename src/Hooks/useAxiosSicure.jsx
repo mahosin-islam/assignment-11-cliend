@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 import { AuthContex } from "../Providers/AuthContex";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://garments-server-orpin.vercel.app",
 });
 
 const useAxiosSicures = () => {
@@ -22,7 +22,7 @@ const useAxiosSicures = () => {
         return respons;
       },
       (err) => {
-        console.log("ehormsf", err);
+      
         const errorStatus = err.status;
         if (errorStatus == 403 || errorStatus == 401) {
           creatSingOut().then(() => {

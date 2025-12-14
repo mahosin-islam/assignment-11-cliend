@@ -49,16 +49,15 @@ const Navbar = () => {
   };
 
   return (
-    <div>
-      <div className="navbar  my-2 shadow-sm ">
+    <div className=" shadow-sm">
+      <div className="navbar  z-2 shadow-sm bg-white fixed w-full top-0 left-0">
         <div className="navbar-start">
           <div className="flex gap-2 items-center">
             <div onClick={handelToge} className="md:hidden lg:hidden block">
               <Hamburger size={20} />
             </div>
             <div>
-                
-                 <img className="h-20" src="https://i.ibb.co.com/VYvhHrxF/images-2-removebg-preview.png" alt="" />
+                 <h2 className="text-2xl text-red-400">Garmants</h2>
             </div>
           </div>
         </div>
@@ -123,7 +122,7 @@ const Navbar = () => {
          
         </div>
       </div>
-      <div className="md:hidden lg:hidden block ">{open && <>{link}</>}</div>
+      <div className="mt-28  md:hidden lg:hidden block ">{open && <>{link}</>}</div>
     </div>
   );
 };
