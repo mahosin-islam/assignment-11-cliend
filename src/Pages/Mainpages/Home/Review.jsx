@@ -28,7 +28,7 @@ const Review = () => {
       <div className="text-center w-8/12 mx-auto ">
         <h2 className="text-3xl py-2 font-bold">What our customers are sayings</h2>
         <p>
-          Enhance posture, mobility, and well-being effortlessly with Posture
+          Enhance posture, mobility,  well-being effortlessly with Posture
           Pro. Achieve proper alignment, reduce <br /> pain, and strengthen your body
           with ease!
         </p>

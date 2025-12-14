@@ -12,7 +12,7 @@ const Home = () => {
   const {user}=use(AuthContex)
   console.log(user)
   return (
-     <div className="">
+     <div className="md:mt-20">
     
        <HeroBanner></HeroBanner>
        <div className="">

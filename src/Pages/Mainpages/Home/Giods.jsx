@@ -7,7 +7,7 @@ import { Link } from "react-router";
 const steps = [
   {
     id: 1,
-    linK:'/Allporducts',
+ 
     icon: <FaSearch size={40} />,
     title: "Browse Products",
     desc: "Explore our wide collection of stylish garments for every occasion.",
