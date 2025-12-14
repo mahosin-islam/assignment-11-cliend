@@ -7,7 +7,7 @@ import Loading from "../../../Extra/Loading";
 
 const Allproduct = () => {
   const axiosSicure = useAxiosSicures();
-  const limit = 3;
+  const limit = 6;
 const [currentpage, setCurrentpage] = useState(0);
 
 const { isLoading, data } = useQuery({
@@ -29,7 +29,7 @@ const totalpage = Math.ceil(total / limit);
 
   return (
     <div>
-      <h2>Allpages {total}</h2>
+     
       <div className="pt-12 grid grid-cols-1  md:grid-cols-3  gap-8 2xs:bg-red-500 2xs:bg-red-500 mx-10">
         {Array.isArray(product) &&
           product.map((card) => <AllCard key={card._id} card={card}></AllCard>)}
