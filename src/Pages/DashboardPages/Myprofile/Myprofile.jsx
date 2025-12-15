@@ -110,8 +110,8 @@ const Myprofile = () => {
             About Me
           </h3>
           <p className="text-gray-600 leading-relaxed">
-            Hello! I'm Mahosin, a passionate web developer from Dhaka,
-            Bangladesh. I love creating beautiful and responsive web
+            Hello! I'm Mahosin, a passionate web developer from Dhaka,Barguna
+            Bangladesh. I vels creating beautiful and responsive web
             applications using React, Tailwind CSS, and modern technologies.
             Always open to learning new things and improving my skills.
           </p>
