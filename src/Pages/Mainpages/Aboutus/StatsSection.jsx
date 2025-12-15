@@ -62,7 +62,7 @@ const StatsSection = () => {
 
         <p className="text-gray-600 max-w-2xl mx-auto mb-12">
           Numbers that reflect oru commitment, trust
-           and customer satisfaction
+           and customer satisfaction  
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 rounded-2xl p-15 md:border-2 md:border-gray-400">
