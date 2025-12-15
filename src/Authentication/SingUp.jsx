@@ -27,7 +27,7 @@ const SingUp = () => {
     updataUserProfile,
     loader,
   } = use(AuthContex);
-  console.log(user);
+ 
 
   //emplement post method widd tanstacqury
   const axiosSicure = useAxiosSicures();
@@ -52,7 +52,7 @@ const SingUp = () => {
   }
   // singWith emailandpasswor
   const handelFomSubmit = async (data) => {
-    console.log("data", data);
+  
     try {
       const email = data.email;
       const photo = data.photo[0];
@@ -81,7 +81,7 @@ const SingUp = () => {
   };
 
 
-  
+
   ///singUp with google///
   const handelGoogeSing = async () => {
     try {
