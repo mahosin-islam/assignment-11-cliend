@@ -8,6 +8,7 @@
     @tanstack/react-query,
     axios,
     firebase,
+    react-icon
     framer-motion,
     react-do,
     react-hook-f.0,

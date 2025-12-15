@@ -46,7 +46,7 @@ const Approveorder = () => {
       status: trackingData.status,
       date: new Date(),
     };
-    
+  
     const res = await axiosSicure.post("/trackin", TrackingInfo);
     console.log("post reslt", res);
     toast("post tracking id");
