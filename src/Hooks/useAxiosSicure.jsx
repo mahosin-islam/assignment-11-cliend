@@ -5,8 +5,8 @@ import { useNavigate } from "react-router";
 import { AuthContex } from "../Providers/AuthContex";
 
 const axiosSecure = axios.create({
-  // baseURL: "https://garments-server-orpin.vercel.app",
-  baseURL: "http://localhost:5000",
+  baseURL: "https://garments-server-orpin.vercel.app",
+  
 });
 
 const useAxiosSicures = () => {

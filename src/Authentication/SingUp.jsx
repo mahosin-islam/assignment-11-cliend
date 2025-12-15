@@ -32,29 +32,19 @@ const SingUp = () => {
   //emplement post method widd tanstacqury
   const axiosSicure = useAxiosSicures();
 
-  const { isPaused, isError, mutateAsync } = useMutation({
+  const { isLoading, isError, mutateAsync } = useMutation({
     mutationFn: async (data) => await axiosSicure.post(`/user`, data),
-    onSuccess: () => {
-      toast("succes full you post");
-      navigate(location.state || "/");
-    },
-    onError: (err) => {
-      console.log("error", err);
-    },
-    onMutate: (data) => {
-      console.log("i will post this data", data);
-    },
-    onSettled: (data, error) => {
-      if (data) {
-        console.log(data);
-      }
-      if (error) {
-        console.log(error);
-      }
-    },
-    retry: 3,
+   
+
+  onSuccess: () => {
+    toast("Successfully registered");
+  },
+  onError: (err) => {
+    toast(err.message || "Registration failed");
+  },
+    retry: 5,
   });
-  if (isPaused) {
+  if (isLoading) {
     return <Loading></Loading>;
   }
   if (isError) {
@@ -81,15 +71,17 @@ const SingUp = () => {
         photoURL: uploadImbb,
       };
       await updataUserProfile(update);
-
       await mutateAsync(creatUserRol);
-
       setUser(res.user);
-      console.log("user", res.user);
+       navigate(location.state || "/");
+     
     } catch (err) {
       toast("Registration Error:", err.message);
     }
   };
+
+
+  
   ///singUp with google///
   const handelGoogeSing = async () => {
     try {
