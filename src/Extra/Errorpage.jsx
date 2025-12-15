@@ -1,5 +1,5 @@
 
-import { useNavigate } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 
 const ErrorPage = () => {
   const navigate = useNavigate()
@@ -51,6 +51,10 @@ const ErrorPage = () => {
 
               <span>Go back</span>
             </button>
+            <Link to="/">
+            <button className='btn'>Home</button>
+            </Link>
+
 
            
           </div>
