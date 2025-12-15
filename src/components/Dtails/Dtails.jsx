@@ -1,3 +1,4 @@
+
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import useAxiosSicures from "../../Hooks/useAxiosSicure";
@@ -71,9 +72,8 @@ const Dtails = () => {
     }
   };
   const handelSespend = () => {
-      if (status == "pending") {
-      return toast(" could not access order beacuse you are state pending");
-    } else if (status === "suspend") {
+     
+    if (status === "suspend") {
       return toast("not could no access order beacuse you are suspend");
     }
 
@@ -140,7 +140,7 @@ const Dtails = () => {
           <div className="flex justify-between items-center py-3">
             <p className="text-3xl font-bold text-pink-500">${price}</p>
 
-            {status === "approve" && role === "buyer" ? (
+            {status === "approve" || status ==="pending" && role === "buyer" ? (
               <Link to="/Order" state={{ orderProduct }}>
                 <button className="btn bg-amber-500 text-white text-lg font-semibold shadow hover:bg-amber-600">
                   Order
