@@ -24,32 +24,26 @@ const SingUp = () => {
     setUser,
     singInWithGoogle,
     updataUserProfile,
-    loader,
+  
   } = use(AuthContex);
- 
 
   //emplement post method widd tanstacqury
   const axiosSicure = useAxiosSicures();
 
-  const {  isError, mutateAsync } = useMutation({
+  const { mutateAsync } = useMutation({
     mutationFn: async (data) => await axiosSicure.post(`/user`, data),
-   
 
-  onSuccess: () => {
-    toast("Successfully registered");
-  },
-  onError: (err) => {
-    toast(err.message || "Registration failed");
-  },
+    onSuccess: () => {
+      toast("Successfully registered");
+    },
+    onError: (err) => {
+      toast(err.message || "Registration failed");
+    },
     retry: 5,
   });
 
-  if (isError) {
-    return toast("you post request fail");
-  }
-  // singWith emailandpasswor
+  // singWith email-Andpasswor
   const handelFomSubmit = async (data) => {
-  
     try {
       const email = data.email;
       const photo = data.photo[0];
@@ -63,21 +57,21 @@ const SingUp = () => {
         Role: data.role,
         status: "pending",
       };
+
       const update = {
         displayName: data.name,
         photoURL: uploadImbb,
       };
       await updataUserProfile(update);
+
       await mutateAsync(creatUserRol);
+
       setUser(res.user);
-       navigate(location.state || "/");
-     
+      navigate(location.state || "/");
     } catch (err) {
       toast("Registration Error:", err.message);
     }
   };
-
-
 
   ///singUp with google///
   const handelGoogeSing = async () => {
@@ -104,9 +98,7 @@ const SingUp = () => {
   const handelEye = () => {
     setEye(!eye);
   };
-  if (loader) {
-    return <Loading></Loading>;
-  }
+ 
   return (
     <div className=" flex justify-center items-center h-screen">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
