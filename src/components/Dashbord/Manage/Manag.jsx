@@ -2,9 +2,9 @@ import React from 'react';
 
 const Manag = () => {
     return (
-        <div className='flex justify-center my-10'>
+        <div className='flex justify-center my-20'>
             <div>
-                <h1>Home page for manegar</h1>
+                <h1>Manager home pages</h1>
             </div>
         </div>
     );
