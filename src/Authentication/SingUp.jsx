@@ -91,7 +91,7 @@ const SingUp = () => {
     }
   };
   ///singUp with google///
-  const handelGoogeSing = async() => {
+  const handelGoogeSing = async () => {
     try {
       singInWithGoogle().then((res) => {
         //database creat usear
@@ -102,7 +102,7 @@ const SingUp = () => {
           Role: "buyer",
           status: "pending",
         };
-           mutateAsync(creatUser);
+        mutateAsync(creatUser);
         setUser(res.user);
         navigate(location.state || "/");
         toast("successful google");
@@ -195,15 +195,16 @@ const SingUp = () => {
                 </span>
               </span>
 
-    {errors.password?.type == "pattern" && (
-                  <p className="text-red-500">
-                    Password must be at least 6 characters and include on
-                    uppercase and on lowercase letters
-                  </p>
-                )}
+              {errors.password?.type == "pattern" && (
+                <p className="text-red-500">
+                  Password must be at least 6 characters and include on
+                  uppercase and on lowercase letters
+                </p>
+              )}
 
-
-              <button className="bg-linear-to-r from-[#632ee3]  to-[#9f62f2] px-4 p-2 font-semibold rounded-sm text-white">singUp</button>
+              <button className="bg-linear-to-r from-[#632ee3]  to-[#9f62f2] px-4 p-2 font-semibold rounded-sm text-white">
+                singUp
+              </button>
               {/* Google */}
               <button
                 onClick={handelGoogeSing}

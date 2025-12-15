@@ -7,7 +7,6 @@ import Manag from '../../../components/Dashbord/Manage/Manag';
 
 const DashboardHome = () => {
   const {isLoading,role}=useRole();
- console.log('role',role)
       if(isLoading){
         return <Loading></Loading>
       }

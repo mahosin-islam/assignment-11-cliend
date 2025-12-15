@@ -48,7 +48,7 @@ const Footer = () => {
           <h6 className="footer-title pb-3 border-b-2">Our Contact</h6>
           <div className="grid grid-flow-col gap-4 text-2xl">
             <span>
-              <span className="flex gap-5 text-blue-600 font-semibold">
+              <span className="flex gap-5  font-semibold">
                 {" "}
                 <FiPhoneCall />
                 <MdOutlineEmail />

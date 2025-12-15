@@ -108,13 +108,13 @@ const Manageuser = () => {
             <div className="modal-box">
                  <div className="flex gap-5">
                     <button 
-                    className="btn bg-amber-400"
+                    className="btn bg-green-400"
                   onClick={statusAproad}
-                  >Aproad</button>
+                  > approve</button>
                   <button 
                   onClick={handelSuspen}
-                  className="btn bg-green-400"
-                  >sespen</button>
+                  className="btn bg-amber-400"
+                  >suspend</button>
                  </div>
 
               <div className="modal-action">

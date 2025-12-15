@@ -23,7 +23,7 @@ const Approveorder = () => {
     queryKey: ["product", "Approved", user?.email],
     queryFn: async () => {
       const res = await axiosSicure?.get(
-        `/manage-pending?status=Approved&email=${user?.email}`
+        `/manage-Approved?status=Approved&email=${user?.email}`
       );
       return res.data;
     },

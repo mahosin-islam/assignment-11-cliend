@@ -20,14 +20,6 @@ const axiosSicure=useAxiosSicures();
  if(isLoading){
   return  <Loading></Loading>
  }
-console.log('data',order)
-
-
-
-
-
-
-
   return (
     <div>
       <h3 className='text-center'>My  order track {order.length}</h3>

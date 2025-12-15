@@ -28,7 +28,7 @@ const Order = () => {
     formState: { errors },
     register,
   } = useForm();
-  console.log("product", orderProduct);
+  
 
   //tanstack-quears-section
   const { isPaused, isError, mutateAsync } = useMutation({
@@ -85,7 +85,6 @@ const Order = () => {
       photo: photo,
       status: "Pending",
     };
-    console.log(orderInfo);
     try {
       if (Payment == "Cash on Delivery") {
         await mutateAsync(orderInfo);

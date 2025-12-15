@@ -9,7 +9,7 @@ import useStatus from "../../../Hooks/useStatus";
 const Pendingorder = () => {
   const { user } = use(AuthContex);
   const navigate =useNavigate();
-  const {status}=useStatus();
+  const {status: userStatus}=useStatus();
   const axiosSicure = useAxiosSicures();
   const queryClient = useQueryClient();
   const { data: product = [] } = useQuery({
@@ -23,12 +23,12 @@ const Pendingorder = () => {
   });
 
   const handelApproved = async (id) => {
-    if(status=="suspend"){
+    if(userStatus=="suspend"){
       navigate('/dashboard/Myprofile')
       return toast('you are suspend not access Approbed')
     }
-    const statu = { status: "Approved" };
-    const res = await axiosSicure.patch(`/order-Approved/${id}`, statu);
+    const payload  = { status: "Approved" };
+    const res = await axiosSicure.patch(`/order-Approved/${id}`,payload );
     if (res.data.modifiedCount) {
       toast("you status Approved");
       queryClient.invalidateQueries();
@@ -36,12 +36,12 @@ const Pendingorder = () => {
   };
 
   const handelRejected = async (id) => {
-       if(status=="suspend"){
+       if(userStatus=="suspend"){
         navigate('/dashboard/Myprofile')
       return toast('you are suspend not access Reject')
     }
-    const statu = { status: "Rejected" };
-    const res = await axiosSicure.patch(`/order-Rejected/${id}`, statu);
+    const payload = { status: "Rejected" };
+    const res = await axiosSicure.patch(`/order-Rejected/${id}`,payload);
     if (res.data.modifiedCount) {
       toast("you status Rejected");
       queryClient.invalidateQueries();
@@ -80,7 +80,7 @@ const Pendingorder = () => {
                   <td>{card.OrderQuantite}</td>
 
                   <td>{new Date(card.createdAt).toLocaleString()}</td>
-                 <td>{card.status}</td>
+                  <td>{card.status}</td>
                   <td className="flex gap-4">
                     <button
                       onClick={() => handelApproved(card._id)}
@@ -96,12 +96,11 @@ const Pendingorder = () => {
                       Rejected
                     </button>
                   </td>
-                    <td>
-                      <Link to={`/dashboard/Order-dtails/${card._id}`}>
-                      <button
-                      className="btn bg-green-400"
-                      >view</button></Link>
-                    </td>
+                  <td>
+                    <Link to={`/dashboard/Order-dtails/${card._id}`}>
+                      <button className="btn bg-green-400">view</button>
+                    </Link>
+                  </td>
                 </tr>
               ))}
             </tbody>

@@ -18,9 +18,10 @@ const Allorders = () => {
     },
   });
  
- console.log('drop',)
+
   return (
     <div>
+         <h2 className="text-2xl text-center py-3">Totals order{order.length}</h2>
       <div className="text-center my-3 rotate-xl">
          <label className="my-2">
         <input

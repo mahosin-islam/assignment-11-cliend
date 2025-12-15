@@ -58,8 +58,8 @@ const AllProducts = () => {
 
   return (
     <div>
-      <h2 className="text-center">
-        allporduct page for admin {product.length}
+      <h2 className="text-center text-2xl py-3">
+        Allporduct  products {product.length}
       </h2>
       <div>
         <div className="overflow-x-auto">

@@ -72,13 +72,13 @@ const Dtails = () => {
   };
   const handelSespend = () => {
       if (status == "pending") {
-      return toast("not could no access order beacuse you are state pending");
+      return toast(" could not access order beacuse you are state pending");
     } else if (status === "suspend") {
       return toast("not could no access order beacuse you are suspend");
     }
 
      else{
-      return toast("not could no access order beacuse you are suspend  and not approve");
+      return toast(" could not access order beacuse you are suspend or Admin  or manager");
   };
   }
   return (

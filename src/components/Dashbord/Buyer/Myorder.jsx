@@ -1,30 +1,27 @@
-import React, { use } from 'react';
-import useAxiosSicures from '../../../Hooks/useAxiosSicure';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { AuthContex } from '../../../Providers/AuthContex';
-import Loading from '../../../Extra/Loading';
-import { Link } from 'react-router';
-import Swal from 'sweetalert2';
+import React, { use } from "react";
+import useAxiosSicures from "../../../Hooks/useAxiosSicure";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { AuthContex } from "../../../Providers/AuthContex";
+import Loading from "../../../Extra/Loading";
+import { Link } from "react-router";
+import Swal from "sweetalert2";
 
 const Myorder = () => {
-
-const {user}=use(AuthContex)
-const queryClient = useQueryClient();
-const axiosSicure=useAxiosSicures();
- const {isLoading, data:order=[]}=useQuery({
-    queryKey:["order", user?.email],
-    queryFn: async()=>{
-     const res=await axiosSicure?.get(`myorder-product?email=${user?.email}`)
+  const { user } = use(AuthContex);
+  const queryClient = useQueryClient();
+  const axiosSicure = useAxiosSicures();
+  const { isLoading, data: order = [] } = useQuery({
+    queryKey: ["order", user?.email],
+    queryFn: async () => {
+      const res = await axiosSicure?.get(
+        `myorder-product?email=${user?.email}`
+      );
       return res.data;
-    }
- })
- if(isLoading){
-  return  <Loading></Loading>
- }
-console.log('data',order)
-
-
-
+    },
+  });
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
   const handelCanselOrder = async (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -51,14 +48,11 @@ console.log('data',order)
     });
   };
 
-
-
-
   return (
     <div>
-      <h3 className='text-2xl text-center'>my order {order.length}</h3>
+      <h3 className="text-2xl text-center">my order {order.length}</h3>
       <div>
-         <div className="overflow-x-auto">
+        <div className="overflow-x-auto">
           <table className="table table-zebra">
             <thead>
               <tr>
@@ -82,19 +76,20 @@ console.log('data',order)
                   <td>{card.OrderQuantite}</td>
                   <td>{card.status}</td>
                   <td>{card.PaymentType}</td>
-                 <td>
-                   
-                         {card.status=="Pending"?
-                         <button 
-                         onClick={()=>handelCanselOrder(card._id)}
-                         className='btn bg-amber-300'>
-                            Cancel
-                         </button>:""}
-                     
-                 </td>
                   <td>
-                   
-                     <Link to={`/dashboard/Order-dtails/${card._id}`}>
+                    {card.status == "Pending" ? (
+                      <button
+                        onClick={() => handelCanselOrder(card._id)}
+                        className="btn bg-amber-300"
+                      >
+                        Cancel
+                      </button>
+                    ) : (
+                      ""
+                    )}
+                  </td>
+                  <td>
+                    <Link to={`/dashboard/Order-dtails/${card._id}`}>
                       <button className="btn ">View dtail</button>
                     </Link>
                   </td>
@@ -109,8 +104,3 @@ console.log('data',order)
 };
 
 export default Myorder;
-
-
-
-
-
