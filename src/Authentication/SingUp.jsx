@@ -21,7 +21,6 @@ const SingUp = () => {
   const navigate = useNavigate();
   const {
     creatUserWithEmail,
-    user,
     setUser,
     singInWithGoogle,
     updataUserProfile,
@@ -32,7 +31,7 @@ const SingUp = () => {
   //emplement post method widd tanstacqury
   const axiosSicure = useAxiosSicures();
 
-  const { isLoading, isError, mutateAsync } = useMutation({
+  const {  isError, mutateAsync } = useMutation({
     mutationFn: async (data) => await axiosSicure.post(`/user`, data),
    
 
@@ -44,9 +43,7 @@ const SingUp = () => {
   },
     retry: 5,
   });
-  if (isLoading) {
-    return <Loading></Loading>;
-  }
+
   if (isError) {
     return toast("you post request fail");
   }
@@ -107,9 +104,8 @@ const SingUp = () => {
   const handelEye = () => {
     setEye(!eye);
   };
-  console.log(user);
   if (loader) {
-    return <p>loading...</p>;
+    return <Loading></Loading>;
   }
   return (
     <div className=" flex justify-center items-center h-screen">

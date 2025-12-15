@@ -25,7 +25,7 @@ const Homproduct = () => {
         <p>
           Discover our latest collection of stylish and comfortable garments,
           crafted for every occasion. Browse, choose, and place your order
-          effortlessly to elevate your wardrobe today
+          effortlessly to elevate your wardrobe taday
         </p>
       </div>
       <div className="pt-6 grid grid-cols-1  md:grid-cols-3  gap-8 2xs:bg-red-500 2xs:bg-red-500 mx-10">
