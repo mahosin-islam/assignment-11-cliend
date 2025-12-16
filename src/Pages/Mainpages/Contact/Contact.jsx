@@ -73,7 +73,7 @@ const Contact = () => {
                   className="input w-full"
                   placeholder="Email"
                 />
-                <label className="label">Password</label>
+                <label className="label">Masage</label>
                 <textarea
                   rows="5"
                   cols="4"

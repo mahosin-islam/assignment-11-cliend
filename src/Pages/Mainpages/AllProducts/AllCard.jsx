@@ -40,11 +40,11 @@ const AllCard = ({ card }) => {
             "
             ></div>
           </div>
-          <div className="font-semibold text-lg ">Mame:{ProductName}</div>
-          <div className="font-semibold text-lg">Category:{Category}</div>
-          <div className="font-semibold text-lg">Quantity: {quantity}</div>
+          <div className="font-semibold text-lg ">{ProductName}</div>
+          <div className="font-semibold  text-gray-500 text-base">Category:{Category}</div>
+          <div className="font-semibold text-gray-500 text-base">Quantity: {quantity}</div>
           <div className="flex flex-row items-center gap-1">
-            <div className="font-semibold"> Price: {price}$</div>
+            <div className="font-semibold text-gray-500 text-base"> Price: {price}$</div>
           </div>
           <button className="btn btn-primary w-full">view dtails</button>
         </div>

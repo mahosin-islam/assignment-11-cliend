@@ -59,7 +59,7 @@ const AllProducts = () => {
   return (
     <div>
       <h2 className="text-center text-2xl py-3">
-        Allporduct  products {product.length}
+        Allporduct products {product.length}
       </h2>
       <div>
         <div className="overflow-x-auto">
@@ -72,6 +72,7 @@ const AllProducts = () => {
                 <th>Category</th>
                 <th>Show-Home</th>
                 <th>Action</th>
+                <th>Track</th>
               </tr>
             </thead>
             <tbody>
@@ -115,6 +116,11 @@ const AllProducts = () => {
                     </button>
                     <Link to={`/dashboard/Update/${card._id}`}>
                       <button className="btn btn-accent">update</button>
+                    </Link>
+                  </td>
+                  <td>
+                    <Link to={`/dashboard/Tracking/${card.trackingId}`}>
+                      <button className="btn bg-green-400">view</button>
                     </Link>
                   </td>
                 </tr>

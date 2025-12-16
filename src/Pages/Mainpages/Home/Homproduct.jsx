@@ -20,8 +20,8 @@ const Homproduct = () => {
   }
   return (
     <div className="">
-      <div className="pt-2 text-center  ">
-        <h2 className="text-4xl font-bold">Explore Our Stylish Garments</h2>
+      <div className="my-8 text-center  ">
+        <h2 className="text-4xl font-bold py-2">Explore Our Stylish Garments</h2>
         <p>
           Discover our latest collection of stylish and comfortable garments,
           crafted for every occasion. Browse, choose, and place your order

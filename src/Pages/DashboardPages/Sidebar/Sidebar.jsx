@@ -64,7 +64,7 @@ const Sidebar = () => {
               <li>
                 <Link to="/">
                   <div className="w-10  rounded-full">
-                    home 
+                    <img src="https://i.ibb.co.com/vxWfnnsR/logo-removebg-preview.png" alt="" />
                   </div>
                 </Link>
               </li>

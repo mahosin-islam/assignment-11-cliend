@@ -8,7 +8,7 @@ import StatsSection from "./StatsSection";
 const Aboutus = () => {
   return (
     <div>
-      <div className=" shadow-2xl m-10 my-10 min-h-100 rounded-2xl p-10">
+      <div className=" shadow-2xl md:mt-15 min-h-100 rounded-2xl p-10">
         {/* title*/}
         <div>
           <h2 className="text-3xl font-semibold">
@@ -41,7 +41,7 @@ const Aboutus = () => {
               </p>
 
               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="p-6 border rounded-2xl hover:shadow-lg transition">
+                <div class=" border rounded-2xl hover:shadow-lg transition">
                   <div class="text-red-400 text-4xl mb-4">
                     <GrDeliver />
                   </div>
@@ -122,14 +122,14 @@ const Aboutus = () => {
           </motion.div>
 
           {/* Small Images */}
-          <div className="flex md:flex-col gap-6">
+          <div className="flex-row h  md:flex-col ">
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="overflow-hidden rounded-2xl shadow"
             >
-              <img
+              <img 
                 src="https://i.ibb.co.com/FLhcZvgW/download.jpg"
-                className="w-full h-48 object-cover"
+                className="w-full  object-cover "
               />
             </motion.div>
 
@@ -140,7 +140,7 @@ const Aboutus = () => {
               <img
                 src="https://i.ibb.co.com/PzTrds9Y/workers-in-a-garments-factory-in-bangladesh-676x380-400x260.png"
                 alt="Garments Team"
-                className="w-full h-48 object-cover"
+                className="w-full  object-cover"
               />
             </motion.div>
           </div>

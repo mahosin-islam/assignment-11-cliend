@@ -13,8 +13,8 @@ const product = [amzon, amzonVacto, casio, moonsta, randstad, start_people];
 
 const Resposer = () => {
   return (
-    <div className="pb-3 text-center">
-        <h2 className="text-3xl font-semibold py-6">Our Resposer  teams</h2>
+    <div className="mb-2  pb-6 text-center">
+        <h2 className="text-3xl font-semibold py-10">Our Resposer  teams</h2>
        < Swiper
       slidesPerView={4}
       centeredSlides={true}

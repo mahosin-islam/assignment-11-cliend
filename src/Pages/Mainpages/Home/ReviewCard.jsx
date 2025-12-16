@@ -7,7 +7,7 @@ const ReviewCard = ({review}) => {
     const {user_photoURL,review:pasination,userName}=review;
   
     return (
-       <div className=" my-4 bg-white  shadow-xl  p-8 max-w-xl border border-gray-100">
+       <div className=" my-4   shadow-xl  p-8 max-w-xl border border-gray-100">
       {/* Quote Icon */}
       <div className="text-teal-300 text-5xl mb-3">
   <FaQuoteLeft></FaQuoteLeft>

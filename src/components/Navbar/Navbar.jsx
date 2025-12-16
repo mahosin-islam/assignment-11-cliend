@@ -58,7 +58,7 @@ const Navbar = () => {
               <Hamburger size={20} />
             </div>
             <div>
-                 <h2 className="text-2xl text-red-400">Garmants</h2>
+                <img src="https://i.ibb.co.com/vxWfnnsR/logo-removebg-preview.png" alt="" />
             </div>
           </div>
         </div>
@@ -115,11 +115,7 @@ const Navbar = () => {
               <li>
                 <Link to="/dashboard">dashboard</Link>
               </li>
-              <li>
-                <button 
-               
-                onClick={handelLogOut}>Logout  <MdLogout /></button>
-              </li>
+            
             </ul>
           </div>
           
@@ -127,7 +123,7 @@ const Navbar = () => {
          
         </div>
       </div>
-      <div className="mt-18 p-5 text-2xl font-semibold  text-gray-600 md:hidden lg:hidden block ">{open && <>{link}</>}</div>
+      <div className="mt-10 md:mt-0 p-5 text-2xl font-semibold  text-gray-600 md:hidden lg:hidden block ">{open && <>{link}</>}</div>
     </div>
   );
 };

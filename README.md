@@ -1,7 +1,7 @@
 ## ProjecName=Garmants
 ## popus this websit this wevsite build for  Garments Order & Production Tracker System it can control anly admin and manager creat new porduct and other buyer can this product orderd then manager can add this product informaiton and product currend tracking info
 
-##  live_URL =https://garmamts-product-trackar.netlify.app/
+##  live_URL =https://treemini-shop.pages.dev/
 
 ## npm-packeg[
     @tailwindcss/vite,

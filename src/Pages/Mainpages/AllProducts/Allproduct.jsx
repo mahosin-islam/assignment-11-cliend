@@ -10,7 +10,7 @@ const Allproduct = () => {
   const limit = 6;
 const [currentpage, setCurrentpage] = useState(0);
 
-const { isLoading, data } = useQuery({
+const { Loading, data } = useQuery({
   queryKey: ["products", currentpage],
   queryFn: async () => {
     const res = await axiosSicure.get(
@@ -20,7 +20,9 @@ const { isLoading, data } = useQuery({
   },
 });
 
-if (isLoading) return <Loading />;
+ if(Loading){
+  return <Loading></Loading>
+ }
 
 const product= data?.result || [];
 const total = data?.total || 0;

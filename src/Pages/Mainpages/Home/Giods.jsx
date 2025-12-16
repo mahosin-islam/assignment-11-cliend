@@ -68,9 +68,9 @@ const Giods = () => {
           <motion.div
             key={step.id}
             variants={stepVariants}
-            className="relative rounded-xl group  md:px-6 px-2 py-1
+            className="relative rounded-xl group  md:px-6 
             flex flex-col items-center 
-            md:py-3 rounded-2x  font-semibold shadow-md  focus:outline-none focus:ring-4 focus:ring-amber-300 text-[14px]  cursor-pointer"
+            md:py-3 rounded-2x p-6 font-semibold shadow-md  focus:outline-none focus:ring-4 focus:ring-amber-300 text-[14px]  cursor-pointer"
             
           >
             <span className=" rounded-xl absolute left-0 top-0 w-0 h-full bg-gray-400 opacity-30 group-hover:w-1/1 transition-all duration-500 ease-out z-0"></span>
@@ -93,7 +93,7 @@ const Giods = () => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.7 }}
-        className="text-center mt-12"
+        className="text-center "
       >
        
       </motion.div>

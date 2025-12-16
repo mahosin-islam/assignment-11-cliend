@@ -140,10 +140,10 @@ const Dtails = () => {
           <div className="flex justify-between items-center py-3">
             <p className="text-3xl font-bold text-pink-500">${price}</p>
 
-            {status === "approve" || status ==="pending" && role === "buyer" ? (
+            {(status === "approve" || status ==="pending") && role === "buyer" ? (
               <Link to="/Order" state={{ orderProduct }}>
                 <button className="btn bg-amber-500 text-white text-lg font-semibold shadow hover:bg-amber-600">
-                  Order
+                  Orders
                 </button>
               </Link>
             ) : (
@@ -151,7 +151,7 @@ const Dtails = () => {
                 onClick={handelSespend}
                 className="btn bg-amber-500 text-white text-lg font-semibold shadow hover:bg-amber-600"
               >
-                Order
+                Orders
               </button>
             )}
           </div>
