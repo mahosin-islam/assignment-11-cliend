@@ -3,127 +3,189 @@ import { use, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContex } from "../../Providers/AuthContex";
 import { toast } from "react-toastify";
+import { FiSun } from "react-icons/fi";
+import { FiMoon } from "react-icons/fi";
 import { MdLogout } from "react-icons/md";
-// import log from "../assets/Logo.png";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const { user, creatSingOut } = use(AuthContex);
   const [open, setOpen] = useState(false);
-  const [theme, setThem] = useState(localStorage.getItem("theme") || "light");
+  // const [theme, setThem] = useState(localStorage.getItem("theme") || "light");
+  // useEffect(() => {
+  //   document.documentElement.setAttribute("data-theme", theme);
+  //   localStorage.setItem("theme", theme);
+  // }, [theme]);
+  // const handleTheme = (check) => {
+  //   setThem(check ? "dark" : "light");
+  // };
+  const [dark, setDark] = useState(localStorage.getItem("theme") === "dark");
+
   useEffect(() => {
-    const html = document.querySelector("html");
-    html.setAttribute("data-theme", theme);
+    const theme = dark ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
-  }, [theme]);
-  const handleTheme = (check) => {
-    setThem(check ? "dark" : "light");
-  };
-          // user loadin
+  }, [dark]);
 
+  const navigate = useNavigate();
 
-  const handelToge = () => {
-    setOpen(!open);
-  };
-  const link = (
-    <>
-      <NavLink to="/home">Home</NavLink>
-      <h2>
-        <NavLink to="/Allporduct">Allporduct</NavLink>
-      </h2>
-          <h2>
-            <NavLink to="/Aboutus">About-us</NavLink>
-          </h2>
-          <h2>
-            <NavLink to="/contact">Contact</NavLink>
-          </h2>
-    </>
-  );
-  const navigate =useNavigate()
   const handelLogOut = () => {
     creatSingOut()
       .then(() => {
-        toast("successful logout");
-        navigate('/')
+        toast.success("Successful logout");
+        navigate("/");
       })
-
       .catch((err) => console.log(err.message));
   };
 
   return (
-    <div className=" shadow-sm">
-      <div className="navbar  z-2 shadow-sm bg-white fixed w-full top-0 left-0">
+    <div className="relative">
+      {/* ===== TOP NAVBAR ===== */}
+      <div className="navbar fixed top-0 left-0 z-50 w-full     bg-[#0f172a] shadow-sm">
         <div className="navbar-start">
-          <div className="flex gap-2 items-center">
-            <div onClick={handelToge} className="md:hidden lg:hidden block text-green-500">
-              <Hamburger size={20} />
+          <div className="flex items-center gap-2">
+            <div className="md:hidden text-white">
+              <Hamburger toggled={open} toggle={setOpen} size={20} />
             </div>
-            <div>
-                <img src="https://i.ibb.co.com/vxWfnnsR/logo-removebg-preview.png" alt="" />
-            </div>
+            <img
+              className="w-12"
+              src="https://i.ibb.co.com/vxWfnnsR/logo-removebg-preview.png"
+              alt="logo"
+            />
           </div>
         </div>
-        <div className="navbar-center">
-          <div className="  items-center hidden text-gray-600 font-sem md:flex gap-3 ">{link}</div>
+
+        <div className="navbar-center hidden md:flex">
+          <ul className="flex gap-6 font-medium text-white">
+            {["home", "Allporduct", "Aboutus", "contact"].map((item) => (
+              <li key={item}>
+                <NavLink
+                  to={`/${item}`}
+                  className="hover:text-green-500 transition"
+                >
+                  {item}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div className="navbar-end">
-          <div className="mr-10 flex gap-2 items-center">
-            {user ? (
-              <button 
-              className="btn"
-              onClick={handelLogOut}>Logout <MdLogout /></button>
-            ) : (
-              <>
-                <Link className="btn" to="/login">Login</Link>
-
-                <Link className="btn" to="/Singup">Register</Link>
-              </>
-            )}
-          </div>
-          {user&&
-           <div className="dropdown dropdown-end">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
-            >
-              <div className="w-10  rounded-full">
-                <img
-                  referrerPolicy="no-referrer"
-                  src={
-                    user?.photoURL ||
-                    "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                  }
-                  alt="Tailwind CSS Navbar component"
-                />
-              </div>
-            </div>
-            <ul
-              tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-            >
-              <li>
-                <div className="navbar">
-                  <input
-                    onChange={(e) => handleTheme(e.target.checked)}
-                    type="checkbox"
-                    defaultChecked={localStorage.getItem("theme") === "dark"}
-                    className="toggle"
+        <div className="navbar-end gap-2 mr-6">
+          {user ? (
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10  rounded-full">
+                  <img
+                    referrerPolicy="no-referrer"
+                    src={
+                      user?.photoURL ||
+                      "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    }
+                    alt="Tailwind CSS Navbar component"
                   />
                 </div>
-              </li>
-              <li>
-                <Link to="/dashboard">dashboard</Link>
-              </li>
-            
-            </ul>
-          </div>
-          
-          }
-         
+              </div>
+              <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                <li>
+                  <button
+                    onClick={() => setDark(!dark)}
+                    className="p-1 rounded-full w-15 border bg-base-200 hover:bg-base-300 transition-all duration-300"
+                    aria-label="Toggle Theme"
+                  >
+                    {dark ? (
+                      <FiSun className="h-6 w-6 text-yellow-400 rotate-0 transition-transform duration-300" />
+                    ) : (
+                      <FiMoon className="h-6 w-6 text-indigo-500 rotate-0 transition-transform duration-300" />
+                    )}
+                  </button>
+                </li>
+
+                <li>
+                  <Link to="/dashboard">dashboard</Link>
+                </li>
+                <li>
+                  <button onClick={handelLogOut} className="btn btn-sm">
+                    Logout <MdLogout />
+                  </button>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <>
+              <Link to="/login" className="btn btn-sm">
+                Login
+              </Link>
+              <Link to="/Singup" className="btn btn-sm">
+                Register
+              </Link>
+            </>
+          )}
         </div>
       </div>
-      <div className="mt-10 md:mt-0 p-5 text-2xl font-semibold  text-gray-600 md:hidden lg:hidden block ">{open && <>{link}</>}</div>
+
+      {/* ===== MOBILE MENU (FRAMER MOTION) ===== */}
+      <AnimatePresence>
+        {open && (
+          <>
+            {/* Overlay */}
+            <motion.div
+              onClick={() => setOpen(false)}
+              className="fixed  inset-0 bg-black/40 z-40"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            />
+
+            {/* Sidebar */}
+            <motion.div
+              className="fixed top-0 left-0 h-full w-72 text-white 
+              bg-[#0f172a] md:hidden
+              z-50 shadow-lg p-6"
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ duration: 0.35, ease: "easeInOut" }}
+            >
+              <ul className="flex flex-col gap-3 mt-10 text-lg font-medium">
+                {["home", "Allporduct", "Aboutus", "contact"].map((item) => (
+                  <motion.li
+                    key={item}
+                    whileHover={{ scale: 1.02 }}
+                    onClick={() => setOpen(false)}
+                  >
+                    <NavLink
+                      to={`/${item}`}
+                      className="block px-4 py-2 rounded-lg hover:bg-teal-600 transition"
+                    >
+                      {item}
+                    </NavLink>
+                  </motion.li>
+                ))}
+              </ul>
+
+              {user && (
+                <div className="mt-6">
+                  <button
+                    onClick={() => setDark(!dark)}
+                    className="p-1 rounded-full w-15 border bg-base-200 hover:bg-base-300 transition-all duration-300"
+                    aria-label="Toggle Theme"
+                  >
+                    {dark ? (
+                      <FiSun className="h-6 w-6 text-yellow-400 rotate-0 transition-transform duration-300" />
+                    ) : (
+                      <FiMoon className="h-6 w-6 text-indigo-500 rotate-0 transition-transform duration-300" />
+                    )}
+                  </button>
+                </div>
+              )}
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

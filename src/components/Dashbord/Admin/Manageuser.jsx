@@ -10,7 +10,7 @@ const Manageuser = () => {
   const queryClient = useQueryClient();
   const [suspend, setSuspend] = useState(null);
   const riderModelRef = useRef();
- const navigate =useNavigate();
+  const navigate = useNavigate();
   const { isLoading, data: product = [] } = useQuery({
     queryKey: ["latest"],
     queryFn: async () => {
@@ -21,14 +21,14 @@ const Manageuser = () => {
   if (isLoading) {
     return <Loading></Loading>;
   }
- 
+
   //mdelShow
   const handelShowModel = (data) => {
     riderModelRef.current.showModal();
-    setSuspend(data)  
- };
+    setSuspend(data);
+  };
 
- const statusAproad = async () => {
+  const statusAproad = async () => {
     const approve = "approve";
     const res = await axiosSicure.patch(`/user-status/${suspend._id}`, {
       approve,
@@ -39,10 +39,10 @@ const Manageuser = () => {
       riderModelRef.current.close();
     }
   };
-       const handelSuspen=()=>{
-          navigate('/Suspend',{state:{suspend}})
-           riderModelRef.current.close();
-       }
+  const handelSuspen = () => {
+    navigate("/Suspend", { state: { suspend } });
+    riderModelRef.current.close();
+  };
 
   return (
     <div>
@@ -71,30 +71,17 @@ const Manageuser = () => {
                   <td>{card.Email}</td>
                   <td>{card.Role}</td>
                   <td>
-                               
-                     {card?.Role=="admin"?
-                     <button
-                      className="text-green-400"
-                     >Not Acces</button>:
-                       <button
-                            onClick={() =>handelShowModel(card)}
-                            className="btn bg-amber-300"
-                          >
-                           {card?.status}
-                          </button>
-                     
-                     }
-
-
-
-                        
-                      
-                      
-              
-                  
+                    {card?.Role == "admin" ? (
+                      <button className="text-green-400">Not Acces</button>
+                    ) : (
+                      <button
+                        onClick={() => handelShowModel(card)}
+                        className="btn bg-amber-300"
+                      >
+                        {card?.status}
+                      </button>
+                    )}
                   </td>
-                   
-                  
                 </tr>
               ))}
             </tbody>
@@ -106,16 +93,15 @@ const Manageuser = () => {
             className="modal modal-bottom sm:modal-middle"
           >
             <div className="modal-box">
-                 <div className="flex gap-5">
-                    <button 
-                    className="btn bg-green-400"
-                  onClick={statusAproad}
-                  > approve</button>
-                  <button 
-                  onClick={handelSuspen}
-                  className="btn bg-amber-400"
-                  >suspend</button>
-                 </div>
+              <div className="flex gap-5">
+                <button className="btn bg-green-400" onClick={statusAproad}>
+                  {" "}
+                  approve
+                </button>
+                <button onClick={handelSuspen} className="btn bg-amber-400">
+                  suspend
+                </button>
+              </div>
 
               <div className="modal-action">
                 <form method="dialog">
@@ -134,7 +120,5 @@ const Manageuser = () => {
 };
 
 export default Manageuser;
-
-
 
 //  onClick={() =>handelShowModel(card)}

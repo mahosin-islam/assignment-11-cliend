@@ -1,4 +1,3 @@
-
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import useAxiosSicures from "../../Hooks/useAxiosSicure";
@@ -6,17 +5,16 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useParams } from "react-router";
 import Loading from "../../Extra/Loading";
 import useRole from "../../Hooks/useRole";
-import { MdKeyboardBackspace } from "react-icons/md";
-import useStatus from "../../Hooks/useStatus";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { toast } from "react-toastify";
+import useStatus from "../../Hooks/useStatus";
 const Dtails = () => {
   const { id } = useParams();
-  const [images, setImages] = useState();
+    const [images, setImages] = useState();
   const navigave = useNavigate();
   const axiosSicure = useAxiosSicures();
   const { role } = useRole();
-  const { isLoading, status } = useStatus();
+  const { status } = useStatus();
   // postApi-for-RoleChack
   const { isPending, data: product = [] } = useQuery({
     queryKey: ["product"],
@@ -32,7 +30,8 @@ const Dtails = () => {
     }
   }, [product]);
 
-  if (isPending || isLoading) {
+
+  if (isPending) {
     return <Loading></Loading>;
   }
   const {
@@ -47,7 +46,9 @@ const Dtails = () => {
     _id,
     cratorEmail,
   } = product;
-  const orderProduct = {
+
+
+  const orderProduc = {
     ProductName,
     price,
     Payment,
@@ -64,23 +65,26 @@ const Dtails = () => {
   const handelNavigate = () => {
     navigave(-1);
   };
-  const RemoveProduct = async (id) => {
-    const res = await axiosSicure.delete(`/product/${id}`);
-    console.log(res);
-    if (res.data.deletedCount) {
-      navigave("/");
-    }
-  };
+
+
   const handelSespend = () => {
-     
-    if (status === "suspend") {
-      return toast("not could no access order beacuse you are suspend");
+    if (role == "manager" || role == "admin") {
+      toast("don't order thsi product you ar not buyer");
+      return;
+    }
+    if (role !== "buyer") {
+      navigave("/login");
+      return;
     }
 
-     else{
-      return toast(" could not access order beacuse you are suspend or Admin  or manager");
+    if (status == "suspend") {
+      toast("you are suspendn you status ");
+      return;
+    } else {
+      navigave("/Order", { state: { orderProduc } });
+    }
   };
-  }
+
   return (
     <div className="my-6 mx-4 md:mx-20 mt-30 rounded-xl border shadow-sm bg-base-100 transition-colors duration-300">
       <div className="flex flex-col md:flex-row">
@@ -140,20 +144,12 @@ const Dtails = () => {
           <div className="flex justify-between items-center py-3">
             <p className="text-3xl font-bold text-pink-500">${price}</p>
 
-            {(status === "approve" || status ==="pending") && role === "buyer" ? (
-              <Link to="/Order" state={{ orderProduct }}>
-                <button className="btn bg-amber-500 text-white text-lg font-semibold shadow hover:bg-amber-600">
-                  Orders
-                </button>
-              </Link>
-            ) : (
-              <button
-                onClick={handelSespend}
-                className="btn bg-amber-500 text-white text-lg font-semibold shadow hover:bg-amber-600"
-              >
-                Orders
-              </button>
-            )}
+            <button
+              onClick={handelSespend}
+              className="btn bg-amber-500 text-white text-lg font-semibold shadow hover:bg-amber-600"
+            >
+              Order
+            </button>
           </div>
         </div>
       </div>

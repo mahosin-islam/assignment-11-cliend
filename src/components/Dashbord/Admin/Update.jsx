@@ -10,6 +10,7 @@ import { UploadImg } from "../../../Utils/UploadImg";
 
 const Update = () => {
   const [previewImages, setPreviewImages] = useState([]);
+  const axiosSicure = useAxiosSicures();
   const { id } = useParams();
   // get porduct
   const { isPending, data: product = [] } = useQuery({
@@ -20,7 +21,7 @@ const Update = () => {
     },
   });
 
-  const axiosSicure = useAxiosSicures();
+  console.log("product", product);
   const { user } = use(AuthContex);
   const navigate = useNavigate();
   // react form submit
@@ -33,7 +34,7 @@ const Update = () => {
 
   //tanstack-quears-section
   const { isPaused, isError, mutateAsync } = useMutation({
-    mutationFn: async (data) => 
+    mutationFn: async (data) =>
       await axiosSicure.patch(`/updat-product/${id}`, data),
     onSuccess: () => {
       toast("succes full product patch");
@@ -66,24 +67,42 @@ const Update = () => {
       MinimumOrder,
       Payment,
       Price,
+      Discount,
       ProductName,
       quantity,
       Category,
     } = data;
     // / form multiple photo select
-    const photo = data.photo;
-    const urlArray = [];
-    for (let file of photo) {
-      const imgUrl = await UploadImg(file);
-      urlArray.push(imgUrl);
-    }
+    // const photo = data.photo;
+    // const urlArray = [];
+    // for (let file of photo) {
+    //   const imgUrl = await UploadImg(file);
+    //   urlArray.push(imgUrl);
+    // }
+
+    // default old images
+
+
+let urlArray = [];
+
+if (data?.photo && data.photo.length > 0) {
+  for (let file of data.photo) {
+    const imgUrl = await UploadImg(file);
+    urlArray.push(imgUrl);
+  }
+} else {
+  urlArray = product?.Images || [];
+}
+
+
 
     const productInfo = {
       ProductName: ProductName,
       cratorEmail: user?.email,
       MinimumOrder: MinimumOrder,
-      price: Price,
-      Homepage: false,
+      price: parseInt(Price),
+      Discount: Discount,
+      Homepage: product?.Homepage,
       quantity: parseInt(quantity),
       Category: Category,
       Payment: Payment,
@@ -91,7 +110,7 @@ const Update = () => {
       creatAt: new Date(),
       Images: urlArray,
     };
-     
+
     try {
       await mutateAsync(productInfo);
     } catch (err) {
@@ -100,8 +119,6 @@ const Update = () => {
 
     reset();
   };
-
-  console.log("productdat", product);
 
   return (
     <div>
@@ -138,6 +155,17 @@ const Update = () => {
                       {errors.Price?.type == "required" && (
                         <p className="text-red-500">Price is required</p>
                       )}
+                    </span>
+
+                    <span>
+                      <label className="label">Discount</label>
+                      <input
+                        type="number"
+                        defaultValue={product.Discount}
+                        {...register("Discount")}
+                        className="input "
+                        placeholder="Discount %"
+                      />
                     </span>
                   </div>
 
@@ -178,17 +206,19 @@ const Update = () => {
                       multiple
                       className="input w-full"
                       {...register("photo", {
-                        required: true,
                         onChange: (e) => {
                           const files = e.target.files;
                           const previewArray = [];
+
                           for (let i = 0; i < files.length; i++) {
                             previewArray.push(URL.createObjectURL(files[i]));
                           }
-                          setPreviewImages(previewArray);
+
+                          setPreviewImages(previewArray); // নতুন image select করলে overwrite
                         },
                       })}
                     />
+
                     <div className="grid grid-cols-3 gap-3 mt-3">
                       {previewImages.map((img, idx) => (
                         <img

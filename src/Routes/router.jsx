@@ -36,7 +36,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     errorElement: <ErrorPage></ErrorPage>,
-    hydrateFallbackElement:<p>load...</p>,
+    hydrateFallbackElement: <p>load...</p>,
     element: <MainLayout></MainLayout>,
     children: [
       {
@@ -69,11 +69,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/Dtails/:id",
-        element: (
-          <Private>
-            <Dtails></Dtails>
-          </Private>
-        ),
+        element: <Dtails></Dtails>,
       },
       {
         path: "/order",

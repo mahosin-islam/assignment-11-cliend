@@ -15,12 +15,14 @@ const Homproduct = () => {
       return res.data;
     },
   });
+  console.log(product)
   if (isLoading) {
     return <Loading></Loading>;
   }
+  
   return (
     <div className="">
-      <div className="my-8 text-center  ">
+      <div className="my-5 text-center  ">
         <h2 className="text-4xl font-bold py-2">Explore Our Stylish Garments</h2>
         <p>
           Discover our latest collection of stylish and comfortable garments,
@@ -28,7 +30,16 @@ const Homproduct = () => {
           effortlessly to elevate your wardrobe taday
         </p>
       </div>
-      <div className="pt-6 grid grid-cols-1  md:grid-cols-3  gap-8 2xs:bg-red-500 2xs:bg-red-500 mx-10">
+      <div className="
+       
+  mx-4 md:mx-10
+  grid 
+  grid-cols-1
+  sm:grid-cols-2
+  md:grid-cols-3
+  lg:grid-cols-4
+  xl:grid-cols-5
+  gap-4">
         {product.map((card) => (
           <AllCard key={card._id} card={card}></AllCard>
         ))}

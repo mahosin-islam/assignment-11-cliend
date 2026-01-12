@@ -7,11 +7,11 @@ const useRole = () => {
   const { user } = use(AuthContex);
   
   const axiosSicure=useAxiosSicures();
- const {isLoading, data:role="buyer"}=useQuery({
+ const {isLoading, data:role=""}=useQuery({
     queryKey:["userRole", user?.email],
     queryFn: async()=>{
      const res=await axiosSicure?.get(`user-role?email=${user?.email}`)
-      return res.data?.Role || "buyer";
+      return res.data?.Role || "";
 
     }
  })

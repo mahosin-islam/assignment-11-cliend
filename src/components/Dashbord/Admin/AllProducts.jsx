@@ -17,6 +17,8 @@ const AllProducts = () => {
       return res.data;
     },
   });
+
+
   if (isLoading) {
     return <Loading></Loading>;
   }
@@ -58,7 +60,7 @@ const AllProducts = () => {
 
   return (
     <div>
-      <h2 className="text-center text-2xl py-3">
+      <h2 className=" text-center text-2xl py-3">
         Allporduct products {product.length}
       </h2>
       <div>

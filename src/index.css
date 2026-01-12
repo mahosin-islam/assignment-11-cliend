@@ -1,10 +1,27 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  /* --color-primary: #0f172a; */
+  --color-primary: #0f172a;
+  --color-secondary: teal;
+}
+
+
+.my-header {
+
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+}
+/* 
 .active{
 color: green;
 font: bold;
 
-}
+} */
 
 

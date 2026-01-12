@@ -14,10 +14,12 @@ const Order = () => {
   const [minorder, setMinorde] = useState(0);
   const navigate = useNavigate();
   //order-product info
-  const { state } = useLocation();
-  const orderProduct = state?.orderProduct;
+const { state } = useLocation();
+const orderProduc = state?.orderProduc;
+
+
   const { ProductName, price, Payment, _id,cratorEmail, MinimumOrder, quantity, photo } =
-    orderProduct;
+    orderProduc;
   useEffect(() => {
     setMinorde(MinimumOrder);
   }, [MinimumOrder]);

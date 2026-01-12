@@ -25,7 +25,7 @@ const Addproduct = () => {
   } = useForm();
 
   //tanstack-quears-section
-  const { isPaused, isError, mutateAsync } = useMutation({
+  const { isPending, isError, mutateAsync } = useMutation({
     mutationFn: async (data) => await axiosSicure.post("/product", data),
 
     onSuccess: () => {
@@ -45,7 +45,7 @@ const Addproduct = () => {
     },
     retry: 3,
   });
-  if (isPaused) {
+  if (isPending) {
     return <Loading></Loading>;
   }
   if (isError) {
@@ -63,6 +63,7 @@ const Addproduct = () => {
       MinimumOrder,
       Payment,
       Price,
+      Discount,
       ProductName,
       quantity,
       Category,
@@ -79,7 +80,8 @@ const Addproduct = () => {
       ProductName: ProductName,
       cratorEmail: user?.email,
       MinimumOrder: MinimumOrder,
-      price: Price,
+      price: parseInt(Price),
+      Discount: Discount,
       Homepage: false,
       quantity: parseInt(quantity),
       Category: Category,
@@ -130,6 +132,16 @@ const Addproduct = () => {
                       {errors.Price?.type == "required" && (
                         <p className="text-red-500">Price is required</p>
                       )}
+                    </span>
+                    <span>
+                      <label className="label">Discount</label>
+                      <input
+                        type="number"
+                        {...register("Discount", { required: true })}
+                        className="input "
+                        placeholder="Discount"
+                      />
+                     
                     </span>
                   </div>
 
