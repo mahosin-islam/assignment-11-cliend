@@ -4,7 +4,7 @@ import { SparklesCore } from "../Ui/sparkles";
 import { motion } from "framer-motion";
 export function SparklesPreview() {
   return (
-    <div className=" relative w-full bg-black flex flex-col items-center justify-center overflow-hidden ">
+    <div className="mt-4 relative w-full bg-black flex flex-col items-center justify-center overflow-hidden ">
       <div className="w-full absolute inset-0 h-screen">
         <SparklesCore
           id="tsparticlesfullpage"

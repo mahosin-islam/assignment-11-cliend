@@ -1,92 +1,95 @@
 import React from "react";
-import { FaMapMarkerAlt } from "react-icons/fa";
-import { FiPhoneCall } from "react-icons/fi";
-import { MdOutlineMarkEmailUnread } from "react-icons/md";
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaPaperPlane } from "react-icons/fa";
 
 const Contact = () => {
   return (
-    <div className="m-10 p-5  rounded-2xl min-h-100">
-      <div className="my-2">
-        <h2 className="text-4xl  font-semibold">Let’s Connect</h2>
-      </div>
-      <div>
-        <section class=" my-4 px-4 md:px-10">
-          <div class=" mx-auto  ">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
-              <div class="p-6 border rounded-2xl  border-gray-300">
-                <div class="text-red-400 text-4xl mb-4">
-                  <MdOutlineMarkEmailUnread />
+    <div className="min-h-screen pt-5 pb-10 px-4 md:px-10 bg-base-100 transition-colors duration-300">
+      <div className="max-w-6xl mx-auto">
+        
+        {/* Header Section */}
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-base-content mb-4 tracking-tight">
+            Let’s <span className="text-pink-500">Connect</span>
+          </h2>
+          <p className="text-base-content/70 max-w-lg mx-auto">
+            Have a question or a project in mind? Drop us a message and we'll get back to you within 24 hours.
+          </p>
+        </div>
+
+        <div className="flex flex-col md:flex-row gap-10 items-stretch">
+          
+          {/* Left Side: Contact Information */}
+          <div className="w-full md:w-1/3 space-y-6">
+            <div className="p-8 bg-pink-500 rounded-3xl text-white shadow-xl shadow-pink-500/20">
+              <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+              
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="bg-white/20 p-3 rounded-xl backdrop-blur-md">
+                    <FaMapMarkerAlt size={20} />
+                  </div>
+                  <p className="font-medium text-lg">Dhaka, Bangladesh</p>
                 </div>
-                <h3 class=" font-semibold text-3xl mb-2">Email</h3>
-                <p class="text-gray-600 text-sm">
-                  mahosin@gmail.com
-                </p>
+                
+                <div className="flex items-center gap-4">
+                  <div className="bg-white/20 p-3 rounded-xl backdrop-blur-md">
+                    <FaEnvelope size={20} />
+                  </div>
+                  <p className="font-medium text-lg">support@garments.com</p>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="bg-white/20 p-3 rounded-xl backdrop-blur-md">
+                    <FaPhoneAlt size={20} />
+                  </div>
+                  <p className="font-medium text-lg">+880 1234 567 890</p>
+                </div>
               </div>
 
-              <div class="p-6 border rounded-2xl border-gray-200">
-                <div class="text-red-400 text-4xl mb-4">
-                  <FiPhoneCall />
-                </div>
-                 <h3 class=" font-semibold text-3xl mb-2">Phone</h3>
-                <p class="text-gray-600 text-sm">
-                  08+01334657
-                </p>
-              </div>
-
-              <div class="p-6 border rounded-2xl border-gray-200">
-                <div class="text-red-400 text-4xl mb-4">
-                  <FaMapMarkerAlt />
-                </div>
-                <h3 class="font-semibold text-3xl mb-2">Our Location</h3>
-                <p class="text-gray-600 text-sm">
-                 Bangladesh,barisha,bargun sador
-                </p>
+              {/* Decorative Circle */}
+              <div className="mt-10 pt-10 border-t border-white/20">
+                <p className="text-sm opacity-80">Follow us on social media for latest updates.</p>
               </div>
             </div>
           </div>
-        </section>
-      </div>
-      {/* conscat-form */}
-      <div>
-        <div className=" flex-col flex justify-between  md:flex-row ">
-          <div className="text-center  md:w-1/2 flex-1  rounded-2xl">
-            <img
-              className="w-full  rounded-2xl"
-              src="
-               https://i.ibb.co.com/3mBkGpFL/images-17.jpg"
-              alt=""
-            />
-          </div>
 
-          <div className="card md:w-1/2">
-            <div className="card-body">
-              <fieldset className="fieldset">
-                <label className="label">Name</label>
-                <input
-                  type="text"
-                  className="input w-full"
-                  placeholder="you name"
-                />
-                <label className="label">Email</label>
-                <input
-                  type="email"
-                  className="input w-full"
-                  placeholder="Email"
-                />
-                <label className="label">Masage</label>
+          {/* Right Side: Contact Form */}
+          <div className="w-full md:w-2/3 bg-base-200/50 backdrop-blur-lg border border-base-300 p-8 md:p-12 rounded-3xl shadow-sm">
+            <form className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="form-control">
+                  <label className="label font-semibold text-base-content/80">Full Name</label>
+                  <input
+                    type="text"
+                    placeholder="Enter your name"
+                    className="input input-bordered w-full bg-base-100 focus:border-pink-500 transition-all rounded-xl p-6"
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label font-semibold text-base-content/80">Email Address</label>
+                  <input
+                    type="email"
+                    placeholder="name@example.com"
+                    className="input input-bordered w-full bg-base-100 focus:border-pink-500 transition-all rounded-xl p-6"
+                  />
+                </div>
+              </div>
+
+              <div className="form-control">
+                <label className="label font-semibold text-base-content/80">Your Message</label>
                 <textarea
                   rows="5"
-                  cols="4"
-                
-                  placeholder="Write your message"
+                  className="textarea textarea-bordered w-full bg-base-100 focus:border-pink-500 transition-all rounded-xl p-4 text-base"
+                  placeholder="How can we help you?"
                 ></textarea>
+              </div>
 
-                <button className="btn w-50 rounded-2xl bg-pink-400 hover:bg-pink-600 py-2 mt-4">
-                  Send message
-                </button>
-              </fieldset>
-            </div>
+              <button className="btn btn-lg bg-pink-500 hover:bg-pink-600 border-none text-white w-full md:w-auto px-10 rounded-xl flex items-center gap-2 transition-transform active:scale-95">
+                Send Message <FaPaperPlane />
+              </button>
+            </form>
           </div>
+
         </div>
       </div>
     </div>

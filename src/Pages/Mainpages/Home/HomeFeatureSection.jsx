@@ -17,7 +17,7 @@ const HomeFeatureSection = () => {
   };
 
   return (
-    <section className="relative w-full min-h-[600px] flex items-center bg-slate-50 overflow-hidden py-20 px-6 md:px-16">
+    <section className="relative w-full min-h-[600px] flex items-center bg-base-100 overflow-hidden py-10 px-5 md:px-10">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         
         {/* Left Side: Animated Text */}
@@ -32,7 +32,7 @@ const HomeFeatureSection = () => {
             New Arrival 2026
           </motion.span>
           
-          <motion.h2 variants={itemVariants} className="text-5xl md:text-7xl font-black text-slate-900 leading-tight">
+          <motion.h2 variants={itemVariants} className="text-5xl md:text-7xl font-black  leading-tight">
             STEP INTO <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600">THE FUTURE.</span>
           </motion.h2>
           

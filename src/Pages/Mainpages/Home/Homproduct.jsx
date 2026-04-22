@@ -21,8 +21,8 @@ const Homproduct = () => {
   }
   
   return (
-    <div className="">
-      <div className="my-5 text-center  ">
+    <div className="px-5 md:px-10  ">
+      <div className="my-5 w-full text-center  ">
         <h2 className="text-4xl font-bold py-2">Explore Our Stylish Garments</h2>
         <p>
           Discover our latest collection of stylish and comfortable garments,
@@ -32,7 +32,7 @@ const Homproduct = () => {
       </div>
       <div className="
        
-  mx-4 md:mx-10
+  
   grid 
   grid-cols-1
   sm:grid-cols-2

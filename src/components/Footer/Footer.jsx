@@ -1,92 +1,86 @@
-import { FaFacebookF, FaLinkedinIn, FaInstagram } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { MdEmail } from "react-icons/md";
-import { Link } from "react-router";
-import { FiPhoneCall } from "react-icons/fi";
+import React from 'react';
+import { 
+  FaFacebook, 
+  FaInstagram, 
+  FaTwitter, 
+  FaLinkedin, 
+  FaPhoneAlt, 
+  FaEnvelope, 
+  FaMapMarkerAlt 
+} from 'react-icons/fa';
+
 const Footer = () => {
   return (
-    <footer className="bg-base-300 text-base-content ">
-      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-        {/* Company */}
+    <footer className="bg-gray-900 text-gray-300 py-10">
+      <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        {/* Brand & About */}
+     
         <div>
-          <div className="flex gap-2 justify-items-center">
-            <img
-              src="https://i.ibb.co.com/vxWfnnsR/logo-removebg-preview.png"
-              alt=""
-            />
-            <span className="text-2xl font-bold mt-2">Company</span>
-          </div>
-
-          <p className="text-lg text-gray-400 my-5">
-            Building innovative solutions for the modern world.
+          <h2 className="text-2xl font-bold bg-gradient-to-r from-pink-800 via-pink-600 to-pink-500 bg-clip-text text-transparent">
+              Garments Hub
+            </h2>
+          <p className="text-sm leading-relaxed">
+            Amader premium clothing collection-e paben shobcheye modern ebong comfortable dress. Quality-te amra kokhono compromise kori na.
           </p>
-
-          <div className="flex gap-3 ">
-            <a className="btn  btn-circle btn-sm  bg-neutral hover:bg-[#1877f2] border-none text-white bg-gray-400">
-              <FaFacebookF />
-            </a>
-            <a className="btn btn-circle btn-sm bg-neutral hover:bg-[#1da1f2] border-none text-white">
-              <FaXTwitter />
-            </a>
-            <a className="btn btn-circle btn-sm bg-neutral hover:bg-[#0a66c2] border-none text-white">
-              <FaLinkedinIn />
-            </a>
-            <a className="btn btn-circle btn-sm bg-neutral hover:bg-gradient-to-r hover:from-[#f58529] hover:via-[#dd2a7b] hover:to-[#8134af] border-none text-white">
-              <FaInstagram />
-            </a>
+          <div className="flex space-x-4 mt-6">
+            <a href="#" className="hover:text-blue-500 transition-colors"><FaFacebook size={24} /></a>
+            <a href="#" className="hover:text-pink-500 transition-colors"><FaInstagram size={24} /></a>
+            <a href="#" className="hover:text-blue-400 transition-colors"><FaTwitter size={24} /></a>
+            <a href="#" className="hover:text-blue-700 transition-colors"><FaLinkedin size={24} /></a>
           </div>
         </div>
 
         {/* Quick Links */}
         <div>
-          <h2 className="text-xl font-semibold mb-4">Quick Links</h2>
-          <ul className="space-y-2 text-lg">
-            <Link to="/Home">
-              <li className="hover:text-primary cursor-pointer">Home</li>
-            </Link>
-            <Link to="/Aboutus">
-              <li className="hover:text-primary cursor-pointer">About Us</li>
-            </Link>
-            <Link to="/contact">
-              <li className="hover:text-primary cursor-pointer">Contact</li>
-            </Link>
-
-            <Link to="/Allporduct">
-              <li className="hover:text-primary cursor-pointer">Allporduct</li>
-            </Link>
-          </ul>
-        </div>
-
-        {/* Services */}
-        <div>
-          <h2 className="text-xl font-semibold mb-4">Services</h2>
+          <h3 className="text-white font-semibold mb-4 text-lg">Quick Links</h3>
           <ul className="space-y-2 text-sm">
-            <li>Admin managment</li>
-             <li>Sell prodcut</li>
-            <li>Addprodct</li>
-            <li>Manager</li>
-            <li>Buyer</li>
-           
+            <li><a href="/shop" className="hover:text-white transition-colors">Shop All</a></li>
+            <li><a href="/new-arrivals" className="hover:text-white transition-colors">New Arrivals</a></li>
+            <li><a href="/about" className="hover:text-white transition-colors">Our Story</a></li>
+            <li><a href="/blog" className="hover:text-white transition-colors">Fashion Blog</a></li>
           </ul>
         </div>
 
-        {/* Contact */}
+        {/* Customer Service */}
         <div>
-          <h2 className="text-xl font-semibold mb-4">Contact Us</h2>
-          <p className="text-sm opacity-80">123 Dhaka gulsan</p>
-          <p className="text-sm opacity-80">San Francisco, CA</p>
-          <p className="text-sm opacity-80">mahosin@gmail.com</p>
-          <p className="text-sm opacity-80">Phone: +1 (123) 456-7890</p>
-          <div className="text-2xl flex gap-3 mt-3">
-            <MdEmail />
-         <FiPhoneCall />
-          </div>
+          <h3 className="text-white font-semibold mb-4 text-lg">Support</h3>
+          <ul className="space-y-2 text-sm">
+            <li><a href="/track" className="hover:text-white transition-colors">Track Order</a></li>
+            <li><a href="/shipping" className="hover:text-white transition-colors">Shipping Info</a></li>
+            <li><a href="/return" className="hover:text-white transition-colors">Return Policy</a></li>
+            <li><a href="/faq" className="hover:text-white transition-colors">FAQ</a></li>
+          </ul>
         </div>
+
+        {/* Contact Info */}
+        <div>
+          <h3 className="text-white font-semibold mb-4 text-lg">Contact Us</h3>
+          <ul className="space-y-4 text-sm">
+            <li className="flex items-center space-x-3">
+              <FaMapMarkerAlt className="text-blue-500" />
+              <span>Dhanmondi, Dhaka, Bangladesh</span>
+            </li>
+            <li className="flex items-center space-x-3">
+              <FaPhoneAlt className="text-blue-500" />
+              <span>+880 1700-000000</span>
+            </li>
+            <li className="flex items-center space-x-3">
+              <FaEnvelope className="text-blue-500" />
+              <span>support@yourbrand.com</span>
+            </li>
+          </ul>
+        </div>
+
       </div>
 
-      {/* Bottom */}
-      <div className="border-t border-base-content/10 py-4 text-center text-sm opacity-70">
-        © 2025 Company. All rights reserved.
+      {/* Bottom Bar */}
+      <div className="border-t border-gray-800 mt-10 pt-6 text-center text-xs">
+        <p>&copy; {new Date().getFullYear()} YourBrand. All rights reserved.</p>
+        <div className="flex justify-center space-x-4 mt-2 text-gray-500">
+          <span>Privacy Policy</span>
+          <span>Terms of Service</span>
+        </div>
       </div>
     </footer>
   );

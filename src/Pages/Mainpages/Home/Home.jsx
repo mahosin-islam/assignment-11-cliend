@@ -13,15 +13,15 @@ import BuyerShowcase from "./BuyerShowcase";
 const Home = () => {
   return (
     <div className="md:mt-10 bg-base-100">
-      {/* <HeroBanner></HeroBanner> */}
-      <Hero></Hero>
+    
+    <Hero></Hero>
       <div className="">
         <Homproduct></Homproduct>
       </div>
       <BuyerShowcase></BuyerShowcase>
 
       <div>
-        <h2 className="text-2xl py-3 font-semibold">
+        <h2 className="text-2xl py-3 px-5 md:px-10 font-semibold">
           Modern Fashion, Delivered to Your Doorstep
         </h2>
         <SparklesPreview></SparklesPreview>

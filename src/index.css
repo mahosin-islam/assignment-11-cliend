@@ -2,13 +2,46 @@
 @plugin "daisyui";
 
 
+
+/* 🌞 Light Theme */
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  /* --color-primary: #0f172a; */
+
+  /* Background */
+  --color-base-100: #ffffff;
+  --color-base-200: #f1f5f9;
+  --color-base-300: #e2e8f0;
+
+  /* Text */
+  --color-base-content: #0f172a;
+
+  /* Brand */
   --color-primary: #0f172a;
+  --color-primary-content: #ffffff;
   --color-secondary: teal;
+
 }
+
+/* 🌙 Dark Theme */
+@plugin "daisyui/theme" {
+  name: "dark";
+
+  /* Background */
+  --color-base-100: #020617;
+  --color-base-200: #0f172a;
+  --color-base-300: #1e293b;
+
+  /* Text */
+  --color-base-content: #f1f5f9;
+
+  /* Brand */
+  --color-primary: #38bdf8; /* light blue for dark mode */
+  --color-primary-content: #000000;
+
+  --color-secondary: #2dd4bf;
+}
+
 
 
 .my-header {
@@ -17,11 +50,7 @@
   font-weight: 900;
   font-style: normal;
 }
-/* 
-.active{
-color: green;
-font: bold;
 
-} */
 
+/* /// sue exta class */
 

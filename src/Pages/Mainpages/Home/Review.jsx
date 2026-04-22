@@ -65,9 +65,9 @@ const Review = () => {
           </Swiper>
         </>
       </div>
-   
+
       <div>
-     
+
       </div>
     </div>
   );

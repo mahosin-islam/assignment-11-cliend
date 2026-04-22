@@ -20,8 +20,8 @@ const BuyerShowcase = () => {
   ];
 
   return (
-    <section className="py-5  overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-5 px-5 md:px-10  overflow-hidden">
+      <div className="max-w-7xl  ">
         
         {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
