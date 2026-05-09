@@ -182,13 +182,13 @@ const SingUp = () => {
                 </p>
               )}
 
-              <button className="bg-linear-to-r from-[#632ee3]  to-[#9f62f2] px-4 p-2 font-semibold rounded-sm text-white">
+              <button className="btn-gradient-pink text-white">
                 singUp
               </button>
               {/* Google */}
               <button
                 onClick={handelGoogeSing}
-                className="btn bg-white text-black border-[#e5e5e5]"
+                className="btn bg-base-100 text-black border-[#e5e5e5]"
               >
                 <FcGoogle />
                 Login with Google

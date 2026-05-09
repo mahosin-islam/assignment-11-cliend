@@ -2,9 +2,16 @@
 import React from "react";
 import { SparklesCore } from "../Ui/sparkles";
 import { motion } from "framer-motion";
+import { Link } from "react-router";
 export function SparklesPreview() {
   return (
-    <div className="mt-4 relative w-full bg-black flex flex-col items-center justify-center overflow-hidden ">
+          <div>
+             <h2 className="text-2xl py-3 px-5 md:px-10 font-semibold">
+          Modern Fashion, Delivered to Your Doorsteps
+        </h2>
+              <div className="mt-4 relative w-full bg-black flex flex-col items-center justify-center overflow-hidden ">
+
+    
       <div className="w-full absolute inset-0 h-screen">
         <SparklesCore
           id="tsparticlesfullpage"
@@ -55,16 +62,21 @@ export function SparklesPreview() {
               className="mt-8 flex flex-wrap justify-center gap-4"
             >
               <button className="rounded-xl bg-amber-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-amber-600">
-                Shop Now
+               <Link  to="/Aboutus"> 
+                About me
+               </Link>
               </button>
 
               <button className="rounded-xl border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10">
-                View Collection
+              <Link to="/Allporduct">
+                  View Collection
+              </Link>
               </button>
             </motion.div>
           </div>
         </div>
       </div>
-    </div>
+               </div>
+          </div>
   );
 }

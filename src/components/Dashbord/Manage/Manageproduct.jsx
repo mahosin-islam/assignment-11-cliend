@@ -69,6 +69,7 @@ const Manageproduct = () => {
               <th>Name</th>
               <th>Price</th>
               <th>Payment-model</th>
+              <th>Quantity</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -88,7 +89,7 @@ const Manageproduct = () => {
                 <td>{card.price}</td>
 
                 <td>{card.Payment}</td>
-
+                 <td>{card.quantity}</td>   
                 <td className="flex gap-4">
                   <button
                     onClick={() => handelRemove(card._id)}

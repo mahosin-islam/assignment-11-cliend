@@ -5,15 +5,13 @@ const ReviewCard = ({ review }) => {
   const { user_photoURL, review: pasination, userName } = review;
 
   return (
-    <div className="relative my-6 bg-base-100  p-10 max-w-xl rounded-[2.5rem] border border-gray-50 shadow-2xl overflow-hidden group transition-all duration-300">
-      
-      {/* 1. Mint Green/Teal Large Quote Icon (Top Right) */}
+    <div className="relative my-6 bg-base-100  p-10 max-w-xl rounded-[2.5rem] border border-gray-50 shadow-lg overflow-hidden group transition-all duration-300">
       <div className="absolute top-6 right-8 text-base-content text-7xl md:text-8xl opacity-70 z-0">
       
       </div>
 
       <div className="relative z-10">
-        {/* 2. Star Rating (Yellow/Orange) */}
+
         <div className="flex gap-1 mb-8 text-amber-400">
           {[...Array(5)].map((_, i) => (
             <FaStar key={i} size={24} />
@@ -46,7 +44,7 @@ const ReviewCard = ({ review }) => {
               {userName}
             </h3>
             <p className="text-gray-400 text-lg font-normal">
-              Community Member
+              Community Members
             </p>
           </div>
         </div>

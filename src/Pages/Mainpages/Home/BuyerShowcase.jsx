@@ -61,7 +61,7 @@ const BuyerShowcase = () => {
               key={index}
               className="flex-shrink-0 w-[280px] group cursor-pointer"
             >
-              <div className="relative  p-6 rounded-[30%] bg-white shadow-sm border border-slate-100 transition-all duration-500 group-hover:shadow-xl 
+              <div className="relative  p-6 rounded-[30%] bg-base-200 shadow-sm border border-slate-100 transition-all duration-500 group-hover:shadow-xl 
               hober:bg-slate-900
               group-hover:border-orange-200  group-hover:translate-y-2">
                 

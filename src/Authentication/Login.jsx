@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import useAxiosSicures from "../Hooks/useAxiosSicure";
 import { useMutation } from "@tanstack/react-query";
+import { motion } from "framer-motion"; // এনিমেশনের জন্য
 
 const Login = () => {
   const { setUser, userSingIn, singInWithGoogle } = use(AuthContex);
@@ -18,30 +19,13 @@ const Login = () => {
   const navigate = useNavigate();
   const axiosSicure = useAxiosSicures();
 
-  /* ------------------ Auto Login Modal ------------------ */
-  const handelAutoLogin = () => {
-    riderModelRef.current.showModal();
-  };
-           //creadential with Admin
-  const handelWithAdmin = () => {
-    setValue("email", "mahosina@gamil.com");
-    setValue("password", "1234aZ");
+  /* ------------------ Auto Login Helpers ------------------ */
+  const setCredentials = (email, password) => {
+    setValue("email", email);
+    setValue("password", password);
     riderModelRef.current.close();
   };
-           //creadential with Manager
-  const handelWithManager = () => {
-    setValue("email", "mahosinm@gmail.com");
-    setValue("password", "1234aZ");
-    riderModelRef.current.close();
-  };
-           //creadential with Buyer
-  const handelWithBuyer = () => {
-    setValue("email", "mahosinb@gmail.com");
-    setValue("password", "1234aZ");
-    riderModelRef.current.close();
-  };
- 
-  /* ------------------ Login ------------------ */
+
   const handelLogin = async (data) => {
     try {
       const res = await userSingIn(data.email, data.password);
@@ -49,11 +33,10 @@ const Login = () => {
       toast.success("Login successful");
       navigate(location.state || "/");
     } catch (err) {
-      toast.error("Wrong email or password",err);
+      toast.error("Wrong email or password");
     }
   };
 
-  /* ------------------ Google Login ------------------ */
   const { mutateAsync } = useMutation({
     mutationFn: async (data) => await axiosSicure.post(`/user`, data),
   });
@@ -77,100 +60,109 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="card bg-base-100 w-full max-w-sm shadow-2xl">
-        <div className="card-body">
-          <h2 className="text-center">
-            Have you any account?
-            <Link to="/SingUp">
-              <span className="text-blue-400 ml-2">Now SignUp</span>
-            </Link>
-            <br />
-         <button
-  onClick={handelAutoLogin}
-  className="mt-2 inline-flex items-center gap-2 rounded-full 
-  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 
-  px-5 py-2 text-sm font-semibold text-white
-  shadow-md 
- "
->
-  🚀Are you use Use Demo Credential
-</button>
+    <div className="min-h-screen flex justify-center items-center bg-base-100 px-4 transition-colors  duration-300">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="card w-full max-w-md bg-base-100 shadow-xl border border-base-300"
+      >
+        <div className="card-body p-8">
+          <div className="text-center mb-6">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              Welcome Back
+            </h2>
+            <p className="text-sm text-base-content/60 mt-2">
+              New here? <Link to="/SingUp" className="link link-primary font-medium">Create an account</Link>
+            </p>
+          </div>
 
-          </h2>
+          {/* Demo Credentials Button */}
+          <button
+            onClick={() => riderModelRef.current.showModal()}
+            className="btn btn-outline btn-sm rounded-full gap-2 border-dashed mb-6 hover:bg-primary/10 hover:text-primary"
+          >
+            🚀 Use Demo Credentials
+          </button>
 
-          <form onSubmit={handleSubmit(handelLogin)}>
-            <fieldset className="fieldset space-y-3">
-              <label>Email</label>
+          <form onSubmit={handleSubmit(handelLogin)} className="space-y-4">
+            <div className="form-control">
+              <label className="label text-xs font-semibold uppercase tracking-wider">Email Address</label>
               <input
                 type="email"
                 {...register("email", { required: true })}
-                className="input"
-                placeholder="Email"
+                className="input input-bordered focus:input-primary transition-all bg-base-200/50"
+                placeholder="name@example.com"
               />
+            </div>
 
-              <label>Password</label>
+            <div className="form-control">
+              <label className="label text-xs font-semibold uppercase tracking-wider">Password</label>
               <div className="relative">
                 <input
                   type={eye ? "password" : "text"}
                   {...register("password", { required: true })}
-                  className="input w-full"
-                  placeholder="Password"
+                  className="input input-bordered w-full focus:input-primary transition-all bg-base-200/50"
+                  placeholder="••••••••"
                 />
-                <span
+                <button
+                  type="button"
                   onClick={() => setEye(!eye)}
-                  className="absolute top-3 right-4 cursor-pointer"
+                  className="absolute top-1/2 -translate-y-1/2 right-4 text-xl text-base-content/50 hover:text-primary transition-colors"
                 >
                   {eye ? <IoEyeOutline /> : <IoEyeOffOutline />}
-                </span>
+                </button>
               </div>
+            </div>
 
-              <button
-                type="submit"
-                className="bg-linear-to-r from-[#632ee3] to-[#9f62f2] p-2 font-semibold rounded text-white"
-              >
-                Login
-              </button>
+            <button
+              type="submit"
+              className="btn-gradient-pink w-full text-white"
+            >
+              Sign In
+            </button>
 
-              <button
-                type="button"
-                onClick={handelGoogeSing}
-                className="btn bg-white text-black border"
-              >
-                <FcGoogle />
-                Login with Google
-              </button>
-            </fieldset>
+            <div className="divider text-xs text-base-content/40 uppercase">OR</div>
+
+            <button
+              type="button"
+              onClick={handelGoogeSing}
+              className="btn btn-outline w-full gap-3 border-base-300 hover:bg-base-200 transition-all"
+            >
+              <FcGoogle className="text-xl" />
+              Continue with Google
+            </button>
           </form>
         </div>
-      </div>
+      </motion.div>
 
-      {/* -------- Modal -------- */}
-      <dialog
-        ref={riderModelRef}
-        className="modal modal-bottom sm:modal-middle"
-      >
-        <div className="modal-box">
-          <h3 className="font-bold mb-3">Login as</h3>
-
-          <div className="flex gap-4">
-            <button className="btn" onClick={handelWithAdmin}>
-              Admin
-            </button>
-            <button className="btn" onClick={handelWithManager}>
-              manager
-            </button>
-            <button className="btn" onClick={handelWithBuyer}>
-              buyer
-            </button>
+      {/* -------- Demo Login Modal -------- */}
+      <dialog ref={riderModelRef} className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box bg-base-100 border border-base-300">
+          <h3 className="font-bold text-lg mb-4 text-center">Quick Login As:</h3>
+          <div className="grid grid-cols-1 gap-3">
+            {[
+              { role: "Admin", email: "mahosina@gamil.com", color: "btn-error" },
+              { role: "Manager", email: "mahosinm@gmail.com", color: "btn-info" },
+              { role: "Buyer", email: "mahosinb@gmail.com", color: "btn-success" }
+            ].map((item) => (
+              <button 
+                key={item.role}
+                className={`btn btn-outline ${item.color} btn-block capitalize justify-between`}
+                onClick={() => setCredentials(item.email, "1234aZ")}
+              >
+                {item.role} <span>{item.email}</span>
+              </button>
+            ))}
           </div>
-
           <div className="modal-action">
             <form method="dialog">
-              <button className="btn">Close</button>
+              <button className="btn btn-ghost">Cancel</button>
             </form>
           </div>
         </div>
+        <form method="dialog" className="modal-backdrop bg-black/40 backdrop-blur-sm">
+          <button>close</button>
+        </form>
       </dialog>
     </div>
   );

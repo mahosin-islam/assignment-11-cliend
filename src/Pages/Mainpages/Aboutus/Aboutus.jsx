@@ -92,9 +92,6 @@ const Aboutus = () => {
         </div>
         {/*conpany-environment*/}
         <div>
-
-
- 
     <section className="py-4 bg-white px-4">
       <div className="max-w-6xl mx-auto">
 
@@ -144,16 +141,9 @@ const Aboutus = () => {
               />
             </motion.div>
           </div>
-
         </div>
-
       </div>
     </section>
-
-
-
-
-           
         </div>
       </div>
     </div>

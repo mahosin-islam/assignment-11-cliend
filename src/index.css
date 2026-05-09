@@ -3,43 +3,51 @@
 
 
 
+
+
 /* 🌞 Light Theme */
+@theme {
+ 
+  --color-primary: #0f172a;        /* নেভি ব্লু */
+  
+  
+  --color-secondary: #ec4899;      /* Pink (DaisyUI Pink) */
+  --color-secondary-content: #ffffff; /* গোলাপি ওপরের লেখা */
+
+  --color-accent: #14b8a6;         /* Teal (DaisyUI Teal) */
+  --color-accent-content: #ffffff;  /* Teal এর ওপরের লেখা */
+  
+  --color-dark-primary: #38bdf8;    /* Light Blue */
+  
+  --color-dark-secondary: #f472b6;  /* Lighter Pink */
+  
+  --color-dark-accent: #2dd4bf;     /* Lighter Teal */
+}
+
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-
-  /* Background */
   --color-base-100: #ffffff;
   --color-base-200: #f1f5f9;
   --color-base-300: #e2e8f0;
-
-  /* Text */
   --color-base-content: #0f172a;
-
-  /* Brand */
   --color-primary: #0f172a;
   --color-primary-content: #ffffff;
-  --color-secondary: teal;
-
+  --color-secondary: #008080;
 }
 
-/* 🌙 Dark Theme */
 @plugin "daisyui/theme" {
   name: "dark";
-
-  /* Background */
   --color-base-100: #020617;
   --color-base-200: #0f172a;
   --color-base-300: #1e293b;
-
-  /* Text */
-  --color-base-content: #f1f5f9;
-
-  /* Brand */
-  --color-primary: #38bdf8; /* light blue for dark mode */
-  --color-primary-content: #000000;
-
+  --color-base-content: #f8fafc;
+  --color-primary: #38bdf8;
+  --color-primary-content: #020617;
   --color-secondary: #2dd4bf;
+  /* এরর বা সাকসেস কালার ডার্ক মোডে একটু ব্রাইট রাখা ভালো */
+  --color-success: #4ade80;
+  --color-error: #f87171;
 }
 
 
@@ -53,4 +61,17 @@
 
 
 /* /// sue exta class */
-
+@layer components {
+  .btn-gradient-pink {
+    @apply bg-gradient-to-r from-pink-800 via-pink-600 to-pink-500 
+           text-white font-bold py-2 px-3 rounded-lg
+           flex items-center justify-center gap-2
+         ;
+    
+    /* Hover effects */
+    @apply hover:shadow-xl ;
+    
+    /* Dark mode focus */
+    @apply dark:shadow-pink-900/40;
+  }
+}

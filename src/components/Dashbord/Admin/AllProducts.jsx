@@ -18,7 +18,6 @@ const AllProducts = () => {
     },
   });
 
-
   if (isLoading) {
     return <Loading></Loading>;
   }
@@ -57,7 +56,7 @@ const AllProducts = () => {
       }
     });
   };
-
+                console.log("products",product)
   return (
     <div>
       <h2 className=" text-center text-2xl py-3">
@@ -91,7 +90,7 @@ const AllProducts = () => {
 
                   <td>{card.ProductName}</td>
                   <td>{card.price}</td>
-                  <td>{card.Category}</td>
+                  <td>{card.Gender}</td>
                   <td>
                     {card?.Homepage == false ? (
                       <button
@@ -116,9 +115,9 @@ const AllProducts = () => {
                     >
                       delete
                     </button>
-                    <Link to={`/dashboard/Update/${card._id}`}>
+                    {/* <Link to={`/dashboard/Update/${card._id}`}>
                       <button className="btn btn-accent">update</button>
-                    </Link>
+                    </Link> */}
                   </td>
                   <td>
                     <Link to={`/dashboard/Tracking/${card.trackingId}`}>

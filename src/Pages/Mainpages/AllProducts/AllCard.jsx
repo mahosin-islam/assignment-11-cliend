@@ -9,7 +9,7 @@ const AllCard = ({ card }) => {
 <div className="col-span-1 cursor-pointer">
   <div className="bg-base-200 rounded-xl shadow-md hover:shadow-xl transition duration-300 p-3 group">
     {/* Image */}
-    <div className="relative aspect-square overflow-hidden rounded-lg bg-gray-100">
+    <div className="relative aspect-square overflow-hidden rounded-lg bg-base-100">
       <img
         referrerPolicy="no-referrer"
         src={Images}
@@ -30,10 +30,6 @@ const AllCard = ({ card }) => {
       <h3 className="text-sm font-semibold  line-clamp-2">
         {ProductName}
       </h3>
-
-      <p className="text-xs ">
-        Category: {Category}
-      </p>
 
       {/* Price */}
       <div className="flex items-center gap-2 mt-1">

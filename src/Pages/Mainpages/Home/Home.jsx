@@ -9,25 +9,30 @@ import { SparklesPreview } from "../../../components/BackgoruAnimaiton/SparklesP
 import HomeFeatureSection from "./HomeFeatureSection";
 
 import BuyerShowcase from "./BuyerShowcase";
+import WhyChooseUs from "./WhyChooseUs";
+import FlashSaleBanner from "./FlashSaleBanner";
+import FashionGallery from "./FashionGallery";
+import VisionGallery from "./VisionGallery";
+import Male from "./GenderCategory/Male";
+import Childern from "./GenderCategory/Childern";
+import Women from "./GenderCategory/Women";
+
 
 const Home = () => {
   return (
     <div className="md:mt-10 bg-base-100">
-    
-    <Hero></Hero>
-      <div className="">
-        <Homproduct></Homproduct>
-      </div>
+      <Hero></Hero>
+      <Homproduct></Homproduct>
+      <Male></Male>
+      <Childern></Childern>
+      <Women></Women>
       <BuyerShowcase></BuyerShowcase>
-
-      <div>
-        <h2 className="text-2xl py-3 px-5 md:px-10 font-semibold">
-          Modern Fashion, Delivered to Your Doorstep
-        </h2>
-        <SparklesPreview></SparklesPreview>
-      </div>
-
+      <SparklesPreview></SparklesPreview>
+      <WhyChooseUs></WhyChooseUs>
+      <FashionGallery></FashionGallery>
+      <VisionGallery></VisionGallery>
       <HomeFeatureSection></HomeFeatureSection>
+      <FlashSaleBanner></FlashSaleBanner>
       <Review></Review>
     </div>
   );

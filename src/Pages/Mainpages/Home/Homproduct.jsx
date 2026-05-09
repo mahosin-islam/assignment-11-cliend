@@ -15,7 +15,7 @@ const Homproduct = () => {
       return res.data;
     },
   });
-  console.log(product)
+
   if (isLoading) {
     return <Loading></Loading>;
   }
@@ -31,8 +31,7 @@ const Homproduct = () => {
         </p>
       </div>
       <div className="
-       
-  
+
   grid 
   grid-cols-1
   sm:grid-cols-2

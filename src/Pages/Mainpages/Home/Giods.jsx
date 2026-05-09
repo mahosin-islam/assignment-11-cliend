@@ -52,7 +52,7 @@ const Giods = () => {
         <h2 className="text-4xl font-bold mb-3">How It Works</h2>
         <p className="text-gray-700 max-w-2xl mx-auto">
           Follow these simple steps to browse, order, and receive your favorite
-          garments quickly and effortlessly.
+          garments quickly and effortlesslysd.
         </p>
       </motion.div>
 

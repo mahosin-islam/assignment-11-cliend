@@ -1,20 +1,24 @@
-
 import axios from "axios";
 
-export const UploadImg = async (profile) => {
+export const UploadImg = async (imageFile) => {
+const apiKey = "6acfef0a8898fa69d23ef4c70d549dff"; 
+
+console.log("API:", apiKey);;
+
   const formData = new FormData();
-  formData.append("image", profile);
+  formData.append("image", imageFile);
 
-  const url = `https://api.imgbb.com/1/upload?key=${
-    import.meta.env.VITE_IMG_HOST
-  }`;
+  try {
+    const url = `https://api.imgbb.com/1/upload?key=${apiKey}`;
 
-  // 3. Upload image
-  const imgRes = await axios.post(url, formData);
-  return imgRes.data?.data?.url;
+    const imgRes = await axios.post(url, formData, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+
+    return imgRes.data.data.url;
+  } catch (error) {
+    console.error(error.response?.data || error.message);
+  }
 };
-
-
-
-
-

@@ -80,7 +80,7 @@ const Sidebar = () => {
                 <FaShoppingBag size={20} />
               </div>
               <div>
-                <h2 className="text-xl font-bold tracking-tight text-base-contain">Garments Hub</h2>
+                <h2 className="md:text-2xl font-bold bg-gradient-to-r from-pink-800 via-pink-600 to-pink-500 bg-clip-text text-transparent">Garments Hub</h2>
                 <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none mt-1">Premium Portal</p>
               </div>
             </Link>

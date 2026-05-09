@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router';
 
 const HomeFeatureSection = () => {
   // Animation variants for the text staggered effect
@@ -36,14 +37,16 @@ const HomeFeatureSection = () => {
             STEP INTO <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600">THE FUTURE.</span>
           </motion.h2>
           
-          <motion.p variants={itemVariants} className="text-slate-600 text-lg max-w-md leading-relaxed">
+          <motion.p variants={itemVariants} className="text-base-content  max-w-md leading-relaxed">
             Engineered with Hyper-Breathable mesh and our patented Cloud-Stride sole. 
             The perfect balance between athletic performance and street-ready aesthetics.
           </motion.p>
           
           <motion.div variants={itemVariants} className="pt-4">
             <button className="px-8 py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-orange-600 transition-colors duration-300 shadow-xl hover:shadow-orange-200">
-              Explore Collection
+           <Link to="/Allporduct">
+                 Explore Collection
+           </Link>
             </button>
           </motion.div>
         </motion.div>
