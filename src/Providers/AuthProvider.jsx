@@ -45,9 +45,6 @@ useEffect(()=>{
     }
 },[])
 
-
-
-
   const authInfo = {
     user,
     setUser,

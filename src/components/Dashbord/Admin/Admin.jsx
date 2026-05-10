@@ -61,8 +61,8 @@ const Admin = () => {
       {adminStats?.pendingUsers > 0 && (
         <div className="bg-gradient-to-r from-pink-500 to-rose-600 p-4 rounded-2xl shadow-lg  flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-white/20 rounded-lg"><AlertTriangle /></div>
-            <p className="font-bold">Attention Needed: {adminStats.pendingUsers} users are waiting for your approval!</p>
+            <div className="p-2  rounded-lg"><AlertTriangle /></div>
+            <p className="font-bold text-white">Attention Needed: {adminStats.pendingUsers} users are waiting for your approval!</p>
           </div>
           <Link to="/dashboard/manage-users" className="bg-base-100 text-pink-600 px-6 py-2 rounded-xl font-black text-sm hover:scale-105 transition-all uppercase shadow-md">
             Review Now
