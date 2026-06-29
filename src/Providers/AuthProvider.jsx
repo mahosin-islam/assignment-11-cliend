@@ -10,9 +10,7 @@ const creatSingOut=()=>{
     setLoader(true)
      return signOut(auth)
 }
-
 // creatUserEmailAndPasswor
-
 const creatUserWithEmail =(email, password)=>{
     setLoader(true)
  return createUserWithEmailAndPassword(auth,email,password)
@@ -23,8 +21,6 @@ const singInWithGoogle=()=>{
     setLoader(true)
     return signInWithPopup(auth, provider)
 }
-
-
 // singInWithEmailAndPassword
 const userSingIn =(email,password)=>{
     setLoader(true)
@@ -34,7 +30,6 @@ const userSingIn =(email,password)=>{
 const updataUserProfile=(profile)=>{
   return updateProfile(auth.currentUser,profile)
 }
-
 useEffect(()=>{
     const subscibe=onAuthStateChanged(auth,(current)=>{
         setLoader(false),
@@ -44,7 +39,6 @@ useEffect(()=>{
         subscibe()
     }
 },[])
-
   const authInfo = {
     user,
     setUser,

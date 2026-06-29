@@ -192,7 +192,7 @@ const FashionGallery = () => {
 
   return (
     <section className="bg-base-100 text-base-content py-10 px-6 transition-colors duration-300">
-      <div className="max-w-6xl mx-auto">
+      <div className=" mx-auto">
 
         {/* Section header */}
         <motion.div

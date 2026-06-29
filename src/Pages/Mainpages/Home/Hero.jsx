@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
-import { Link } from 'react-router'; // NavLink theke Link e change kora better ekhane
-
+import { Link } from 'react-router'; 
 const sliderData = [
   {
     id: 1,
@@ -10,7 +9,7 @@ const sliderData = [
     aboutLink: "/Aboutus",
     title: "Premium Winter Collection",
     subtitle: "Get up to 40% off on all new arrivals this season.",
-    image: "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&q=80&w=1600",
+    image: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1600&auto=format&fit=crop",
   },
   {
     id: 2,

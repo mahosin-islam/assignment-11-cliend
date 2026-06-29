@@ -12,7 +12,6 @@ import BuyerShowcase from "./BuyerShowcase";
 import WhyChooseUs from "./WhyChooseUs";
 import FlashSaleBanner from "./FlashSaleBanner";
 import FashionGallery from "./FashionGallery";
-import VisionGallery from "./VisionGallery";
 import Male from "./GenderCategory/Male";
 import Childern from "./GenderCategory/Childern";
 import Women from "./GenderCategory/Women";
@@ -30,7 +29,6 @@ const Home = () => {
       <SparklesPreview></SparklesPreview>
       <WhyChooseUs></WhyChooseUs>
       <FashionGallery></FashionGallery>
-      <VisionGallery></VisionGallery>
       <HomeFeatureSection></HomeFeatureSection>
       <FlashSaleBanner></FlashSaleBanner>
       <Review></Review>

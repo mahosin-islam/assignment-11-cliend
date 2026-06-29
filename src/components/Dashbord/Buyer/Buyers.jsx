@@ -8,6 +8,7 @@ import {
 import { ShoppingBag, CheckCircle, Clock, XCircle, CreditCard } from 'lucide-react';
 import { motion } from 'framer-motion';
 import useAxiosSicures from '../../../Hooks/useAxiosSicure';
+import { Link } from 'react-router';
 
 const Buyers = () => {
   const { user } = use(AuthContex);
@@ -26,8 +27,9 @@ const Buyers = () => {
 
   const summary = buyerData?.summary || {};
   const recentOrders = buyerData?.recentOrders || [];
+   
+// চার্টের জন্য ডেটা ফরম্যাট করা (কবে কবে অর্ডার হয়েছে)
 
-  // চার্টের জন্য ডেটা ফরম্যাট করা (কবে কবে অর্ডার হয়েছে)
   const chartData = recentOrders.map(order => ({
     date: new Date(order.createdAt).toLocaleDateString('en-US', { day: 'numeric', month: 'short' }),
     amount: order.Price
@@ -105,9 +107,9 @@ const Buyers = () => {
               </div>
             ))}
           </div>
-          <button className="w-full mt-6 py-3 text-sm font-bold text-pink-600 bg-base-100 rounded-xl hover:bg-pink-100 transition-colors">
+          <Link to="/dashboard/My-order" className="w-full mt-6 py-2 px-5 text-sm font-bold text-pink-600 bg-base-100 rounded-xl hover:bg-pink-100 transition-colors">
             View All History
-          </button>
+          </Link>
         </div>
       </div>
     </div>
@@ -124,6 +126,7 @@ const StatCard = ({ label, value, icon, color, bg }) => (
       {React.cloneElement(icon, { size: 28 })}
     </div>
     <div>
+     
       <p className="text-sm font-medium uppercase tracking-wide">{label}</p>
       <h3 className="text-2xl font-black ">{value}</h3>
     </div>

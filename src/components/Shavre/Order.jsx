@@ -14,11 +14,8 @@ const Order = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const orderProduc = state?.orderProduc;
-
   // Destructure product info
   const { ProductName, price, Payment, _id, cratorEmail, MinimumOrder, quantity, photo, selectedSize } = orderProduc || {};
-
-console.log("minmut oride",orderProduc)
 
   const {
     handleSubmit,

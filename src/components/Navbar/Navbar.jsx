@@ -12,15 +12,13 @@ const Navbar = () => {
   const { user, creatSingOut } = use(AuthContex);
   const [open, setOpen] = useState(false);
   const [dark, setDark] = useState(localStorage.getItem("theme") === "dark");
-
+  
   useEffect(() => {
     const theme = dark ? "dark" : "light";
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
   }, [dark]);
-
   const navigate = useNavigate();
-
   const handelLogOut = () => {
     creatSingOut()
       .then(() => {
@@ -29,7 +27,6 @@ const Navbar = () => {
       })
       .catch((err) => console.log(err.message));
   };
-
   return (
     <div className="relative">
       <div className="navbar fixed top-0 left-0 z-50 w-full bg-white/10 dark:bg-black/20 backdrop-blur-md border-b border-white/20 shadow-sm transition-all duration-300 p-4 md:px-8">

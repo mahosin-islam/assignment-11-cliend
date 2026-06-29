@@ -15,7 +15,6 @@ const Homproduct = () => {
       return res.data;
     },
   });
-
   if (isLoading) {
     return <Loading></Loading>;
   }

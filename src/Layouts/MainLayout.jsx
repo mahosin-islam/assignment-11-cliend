@@ -4,15 +4,15 @@ import Footer from '../components/Footer/Footer';
 import { Outlet } from 'react-router';
 
 const MainLayout = () => {
-    return (
-        <div>
-             <Navbar />
+  return (
+    <div>
+      <Navbar />
       <div className='mt-20 min-h-[calc(100vh-68px)] '>
         <Outlet />
       </div>
       <Footer />
-        </div>
-    );
+    </div>
+  );
 };
 
 export default MainLayout;

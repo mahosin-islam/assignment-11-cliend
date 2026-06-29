@@ -9,7 +9,6 @@ import ReviewCard from "./ReviewCard";
 
 const Review = () => {
   const axiosSicure = useAxiosSicures();
-
   const { data: Reviews = [], isLoading } = useQuery({
     queryKey: ["review"],
     queryFn: async () => {

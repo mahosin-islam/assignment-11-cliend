@@ -11,7 +11,6 @@ import useStatus from "../../Hooks/useStatus";
 import Loading from "../../Extra/Loading";
 import AllCard from "../../Pages/Mainpages/AllProducts/AllCard";
 
-
 const Dtails = () => {
   const { id } = useParams();
   const [activeImage, setActiveImage] = useState("");
@@ -45,12 +44,12 @@ const Dtails = () => {
   useEffect(() => {
     if (product?.Images?.length > 0) setActiveImage(product.Images[0]);
     if (product?.Sizes?.length > 0) setSelectedSize(product.Sizes[0]);
-    // নতুন প্রোডাক্টে ক্লিক করলে পেজ যেন উপরে চলে যায়
     window.scrollTo(0, 0);
   }, [product, id]);
 
-  if (isPending) return <Loading />;
 
+  if (isPending) return 
+  <Loading />;
   const {
     Description, Images, MinimumOrder, ProductName, Payment,
     quantity, price, Discount, Brand, Rating, Sizes, Gender, Season, cratorEmail
@@ -59,7 +58,7 @@ const Dtails = () => {
   const discountedPrice = Discount > 0 ? (price - (price * Discount) / 100).toFixed(0) : price;
 
   const handleBuyNow = () => {
-    if (role === "manager" || role === "admin") return toast.error("Admins cannot place orders.");
+    if (role === "manager" || role === "admin") return toast.error("Admins/Mannager cannot place orders.");
     if (role !== "buyer") return navigate("/login");
     if (status === "suspend") return toast.error("Account suspended.");
     
